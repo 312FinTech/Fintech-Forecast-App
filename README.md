@@ -20,7 +20,7 @@ Run demo app:
 python ~/anaconda3/envs/forecastappenv/share/kivy-examples/demo/showcase/main.py
 ```
 *Use this command to find the file if you can't locate it on your local machine:
-(omit `sudo` if using gitbash)
+(if using gitbash, try this `/c/ProgramData/Anaconda3/envs/forecastappenv/share/kivy-examples/demo/showcase/main.py` path instead)
 ```
 sudo find / -type d -name '*kivy-examples*'
 ```
