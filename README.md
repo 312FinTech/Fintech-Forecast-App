@@ -38,7 +38,7 @@ python ~/anaconda3/envs/forecastappenv/share/kivy-examples/demo/showcase/main.py
 sudo find / -type d -name '*kivy-examples*'
 ```
 
-## {Creating Package for Android](https://kivy.org/doc/stable/guide/packaging-android.html)
+## [Creating Package for Android](https://kivy.org/doc/stable/guide/packaging-android.html)
 
 Edit this line in the `buildozer.spec` file.
 ```
