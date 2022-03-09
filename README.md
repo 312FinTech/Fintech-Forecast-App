@@ -29,4 +29,9 @@ python ~/anaconda3/envs/forecastappenv/share/kivy-examples/demo/showcase/main.py
 (if using gitbash, try this `/c/ProgramData/Anaconda3/envs/forecastappenv/share/kivy-examples/demo/showcase/main.py` path instead)
 ```
 sudo find / -type d -name '*kivy-examples*'
+
+
+## {Creating Package for Android](https://kivy.org/doc/stable/guide/packaging-android.html)
+
+
 ```
