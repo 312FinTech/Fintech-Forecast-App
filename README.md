@@ -15,6 +15,12 @@ python
 import kivy
 exit()
 ```
+Run `main.py` in repo dir:
+```
+python main.py
+```
+
+
 Run demo app:
 ```
 python ~/anaconda3/envs/forecastappenv/share/kivy-examples/demo/showcase/main.py
