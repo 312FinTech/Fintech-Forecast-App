@@ -1,6 +1,9 @@
 # Fintech-Forecast-App
 A Kivy app that uses ML/DL to forecast input ticker symbols and returns a chart of the forecast. Kivy can be deployed on Android, iOS, MacOS, Windows, & Linux OS's.
 
+BTC Forecast Using FB Prophet
+![](images/newplot.png)
+
 ## Install Guide
 To install Anaconda on linux:
 ```
@@ -108,3 +111,10 @@ buildozer serve
 It will tell you a port number and you can access it your browser by doing a `localhost:THE_PORT_NUMBER_HERE`, then download the `.apk` file and transfer it to your device.
 
 Or you can just access it from the project dir where it should be located after successfully compiling.
+
+## [Creating Package for Windows](https://kivy.org/doc/stable/guide/packaging-windows.html)
+### Installation
+```
+conda activate forecastappenv
+conda install -c conda-forge pyinstaller -y
+```
