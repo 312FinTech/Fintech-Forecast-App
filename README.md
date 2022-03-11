@@ -1,11 +1,14 @@
 # Fintech-Forecast-App
-A Kivy app that uses ML/DL to forecast input ticker symbols and returns a chart of the forecast. Kivy can be deployed on Android, iOS, MacOS, Windows, & Linux OS's.
+A [Kivy](https://kivy.org/#home) app that uses ML/DL to forecast input ticker symbols and returns a chart of the forecast. Kivy can be deployed on Android, iOS, MacOS, Windows, & Linux OS's.
 
 BTC Forecast Using FB Prophet
 ![](images/newplot.png)
 
+# Plan
+![](images/Project_Plan.png)
+
 ## Install Guide
-To install Anaconda on linux:
+To [install Anaconda](https://www.anaconda.com/products/individual) on linux:
 ```
 curl https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
 bash Anaconda3-2021.11-Linux-x86_64.sh
