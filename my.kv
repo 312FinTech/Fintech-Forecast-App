@@ -1,0 +1,39 @@
+<LoginScreen>:
+
+    ticker = ticker
+    start_date = start_date
+    days_to_forecast = days_to_forecast
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        GridLayout:
+            cols:2
+
+            Label:
+                text: "Ticker"
+
+            TextInput:
+                id: ticker
+                multiline:False
+
+            Label:
+                text: "Start Data From: \n(YYYY-MM-DD)"
+
+            TextInput:
+                id: start_date
+                multiline:False
+
+            Label:
+                text: "Days to Forecast"
+
+            TextInput:
+                id: days_to_forecast
+                multiline:False
+
+        Button:
+            text: "Forecast"
+
+        
+

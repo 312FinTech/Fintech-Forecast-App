@@ -10,17 +10,34 @@ BTC Forecast Using FB Prophet
 ## Install Guide
 To [install Anaconda](https://www.anaconda.com/products/individual) on linux:
 ```
-curl https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
+wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
 bash Anaconda3-2021.11-Linux-x86_64.sh
 ```
+Feel free to use [mamba](https://anaconda.org/conda-forge/mamba) instead of conda.
+```
+conda install mamba -n base -c conda-forge
+```
 ### Full Install
+If you are using a Linux system make sure you have `gcc`, `g++`, `build-essential`, `python-dev`, and `python3-dev` installed using a package manager or other means.  
 ```
 conda activate base
 conda create --name forecastappenv python=3.8.8 -y
 conda activate forecastappenv
 conda install kivy -c conda-forge -y
 yes | pip install yfinance 
-conda install gcc -y
+conda install -c conda-forge gcc -y
+conda install -c plotly plotly -y
+conda install -c conda-forge prophet -y
+conda install -c conda-forge jupyterlab -y
+```
+If you get and error for the `install gcc` use these commands then:
+```
+conda activate base
+conda create --name forecastappenv python=3.8.8 -y
+conda activate forecastappenv
+conda install kivy -c conda-forge -y
+yes | pip install yfinance numpy matplotlib pandas
+pip install pystan==2.19.1.1 
 conda install -c plotly plotly -y
 conda install -c conda-forge prophet -y
 conda install -c conda-forge jupyterlab -y
@@ -50,17 +67,32 @@ sudo find / -type d -name '*kivy-examples*'
 
 ## Ezekial Pack (FB Prophet)
 ### Installation
-
+If you are using a Linux system make sure you have `gcc`, `g++`, `build-essential`, `python-dev`, and `python3-dev` installed using a package manager or other means.  
 ```
 conda activate base
 conda create --name forecastappenv python=3.8.8 -y
 conda activate forecastappenv
 yes | pip install yfinance 
-conda install gcc -y
+conda install -c conda-forge gcc -y
 conda install -c plotly plotly -y
 conda install -c conda-forge prophet -y
+conda install -c anaconda django
 conda install -c conda-forge jupyterlab -y
 ```
+```
+mamba activate base
+mamba create --name forecastappenv python=3.8.8 -y
+conda activate forecastappenv
+yes | pip install yfinance 
+mamnda install -c conda-forge gcc -y
+mamba install -c plotly plotly -y
+mamba install -c conda-forge prophet -y
+mamba install -c anaconda django
+mamba install -c conda-forge jupyterlab -y
+```
+## Django REST API Endpoints
+To be used with 
+
 
 ### Methods [(see `yahooprophet.py`)](ezekial/yahooprophet.py)
 ```
