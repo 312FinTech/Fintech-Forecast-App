@@ -1,6 +1,10 @@
 # Fintech-Forecast-App
 A [Kivy](https://kivy.org/#home) app that uses ML/DL to forecast input ticker symbols and returns a chart of the forecast. Kivy can be deployed on Android, iOS, MacOS, Windows, & Linux OS's.
 
+Beta v1.0
+
+![](images/v1_chart_return_1.gif)
+
 BTC Forecast Using FB Prophet
 ![](images/newplot.png)
 
@@ -28,6 +32,7 @@ yes | pip install yfinance
 conda install -c conda-forge gcc -y
 conda install -c plotly plotly -y
 conda install -c conda-forge prophet -y
+conda install -c anaconda django -y
 conda install -c conda-forge jupyterlab -y
 ```
 If you get and error for the `install gcc` use these commands then:
@@ -40,6 +45,7 @@ yes | pip install yfinance numpy matplotlib pandas
 pip install pystan==2.19.1.1 
 conda install -c plotly plotly -y
 conda install -c conda-forge prophet -y
+conda install -c anaconda django -y
 conda install -c conda-forge jupyterlab -y
 ```
 ### Kivy Install
@@ -76,7 +82,7 @@ yes | pip install yfinance
 conda install -c conda-forge gcc -y
 conda install -c plotly plotly -y
 conda install -c conda-forge prophet -y
-conda install -c anaconda django
+conda install -c anaconda django -y
 conda install -c conda-forge jupyterlab -y
 ```
 ```
@@ -87,7 +93,7 @@ yes | pip install yfinance
 mamnda install -c conda-forge gcc -y
 mamba install -c plotly plotly -y
 mamba install -c conda-forge prophet -y
-mamba install -c anaconda django
+mamba install -c anaconda django -y
 mamba install -c conda-forge jupyterlab -y
 ```
 ## Django REST API Endpoints

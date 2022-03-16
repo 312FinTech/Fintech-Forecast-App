@@ -13,7 +13,7 @@ warnings.filterwarnings("ignore")
 
 from ezekial import yahooprophet as yfp
 from matplotlib import pyplot as plt
-import time
+# import time
 
 
 class LoginScreen(GridLayout):
@@ -70,7 +70,7 @@ class LoginScreen(GridLayout):
         pimg = yfp_obj.plot()
         pimg.savefig('images/forecast.png')
 
-        time.sleep(3)
+        # time.sleep(3)
         pimg = Image(source='images/forecast.png')
         self.add_widget(pimg)
 
