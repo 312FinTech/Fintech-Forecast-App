@@ -3,15 +3,24 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
-from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty
+from kivy.uix.image import Image
+from kivy.uix.screenmanager import ScreenManager, Screen
+# from kivy.uix.widget import Widget
+# from kivy.properties import ObjectProperty
 
 import warnings
 warnings.filterwarnings("ignore")
 
 from ezekial import yahooprophet as yfp
+from matplotlib import pyplot as plt
+import time
+
 
 class LoginScreen(GridLayout):
+# class LoginScreen(Screen):
+
+# class Floatlayout():
+
 # class LoginScreen(Widget):
 
     # # self.inside = Widget()
@@ -26,6 +35,10 @@ class LoginScreen(GridLayout):
 
         self.inside = GridLayout()
         self.inside.cols = 2
+
+        # Points to image file. ADD PATHLIB PATH OBJ HERE
+        wimg = Image(source='images/312fintech_ver04.png')
+        self.add_widget(wimg)
 
         self.inside.add_widget(Label(text='Ticker: '))
         self.ticker = TextInput(multiline=False)
@@ -53,14 +66,33 @@ class LoginScreen(GridLayout):
         """
         print("Pressed Forecast Button")
         yfp_obj = yfp.YahooProphet(self.ticker.text, self.start_date.text, int(self.days_to_forecast.text))
-        print(yfp_obj.forecast_df().tail(int(self.days_to_forecast.text)))
+        # print(yfp_obj.forecast_df().tail(int(self.days_to_forecast.text)))
+        pimg = yfp_obj.plot()
+        pimg.savefig('images/forecast.png')
+
+        time.sleep(3)
+        pimg = Image(source='images/forecast.png')
+        self.add_widget(pimg)
+
+
+class ForecastWindow(Screen):
+    # def __init__(self, **kwargs):
+    #     super(LoginScreen, self).__init__(**kwargs)
+
+    #     wimg = Image(source='images/312fintech_ver04.png')
+    #     self.add_widget(wimg)
+    pass
 
 
 class MyApp(App):
 
     def build(self):
         return LoginScreen()
+        # sm = ScreenManager()
+        # sm.add_widget(LoginScreen())
+        # sm.add_widget(ForecastWindow(name='forecast'))
 
+        # return sm
 
 if __name__ == '__main__':
     MyApp().run()
