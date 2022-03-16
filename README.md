@@ -91,7 +91,8 @@ mamba install -c anaconda django
 mamba install -c conda-forge jupyterlab -y
 ```
 ## Django REST API Endpoints
-To be used with 
+[To be used with 312Server.](https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c
+)
 
 
 ### Methods [(see `yahooprophet.py`)](ezekial/yahooprophet.py)
