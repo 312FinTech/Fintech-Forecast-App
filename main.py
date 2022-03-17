@@ -14,7 +14,7 @@ warnings.filterwarnings("ignore")
 from ezekial import yahooprophet as yfp
 from matplotlib import pyplot as plt
 # import time
-
+####
 
 class LoginScreen(GridLayout):
 # class LoginScreen(Screen):
@@ -30,7 +30,7 @@ class LoginScreen(GridLayout):
 
     def __init__(self, **kwargs):
         super(LoginScreen, self).__init__(**kwargs)
-        
+
         self.cols = 1
 
         self.inside = GridLayout()
@@ -43,11 +43,11 @@ class LoginScreen(GridLayout):
         self.inside.add_widget(Label(text='Ticker: '))
         self.ticker = TextInput(multiline=False)
         self.inside.add_widget(self.ticker)
-        
+
         self.inside.add_widget(Label(text='Start Data From: \n(YYYY-MM-DD)'))
         self.start_date = TextInput(multiline=False)
         self.inside.add_widget(self.start_date)
-        
+
         self.inside.add_widget(Label(text='Days to Forecast: '))
         self.days_to_forecast = TextInput(multiline=False)
         self.inside.add_widget(self.days_to_forecast)
