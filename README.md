@@ -3,9 +3,9 @@ A [Kivy](https://kivy.org/#home) app that uses ML/DL to forecast input ticker sy
 
 UI Concept
 
-![]("UI Options/Screen Shot 2022-03-16 at 3.28.45 PM.png")
+![](UI_Options/ex1.png)
 
-![]("UI Options/Screen Shot 2022-03-16 at 3.38.36 PM.png")
+![](UI_Options/ex2.png)
 
 Beta v1.0
 
@@ -170,6 +170,7 @@ conda install -c conda-forge pyinstaller -y
 
 - [ ] Multivariate Model
     - [ ] AutoML (Kats)?
+    - [ ] Save pickle file for model and use for forecast, as to not retrain the model on each api call
 - [ ] Create documents showcasing metrics of the app
     - [ ] Metrics showing how often the forecast was correct on new data (NOT backtesting) both in terms of the second derivative (increase or decrease) and the distance from the actual change in price
 - [ ] Rebuild Front end for each platform (i.e. Android studio [might be able to get to work for iOS too])
