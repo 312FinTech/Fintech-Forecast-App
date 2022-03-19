@@ -1,6 +1,12 @@
 # Fintech-Forecast-App
 A [Kivy](https://kivy.org/#home) app that uses ML/DL to forecast input ticker symbols and returns a chart of the forecast. Kivy can be deployed on Android, iOS, MacOS, Windows, & Linux OS's.
 
+UI Concept
+
+![]("UI Options/Screen Shot 2022-03-16 at 3.28.45 PM.png")
+
+![]("UI Options/Screen Shot 2022-03-16 at 3.38.36 PM.png")
+
 Beta v1.0
 
 ![](images/v1_chart_return_1.gif)
@@ -160,3 +166,17 @@ Or you can just access it from the project dir where it should be located after 
 conda activate forecastappenv
 conda install -c conda-forge pyinstaller -y
 ```
+# Future Features / Models / To Do (Please add to this)
+
+- [ ] Multivariate Model
+    - [ ] AutoML (Kats)?
+- [ ] Create documents showcasing metrics of the app
+    - [ ] Metrics showing how often the forecast was correct on new data (NOT backtesting) both in terms of the second derivative (increase or decrease) and the distance from the actual change in price
+- [ ] Rebuild Front end for each platform (i.e. Android studio [might be able to get to work for iOS too])
+- [ ] Website and Dashboard
+    - [ ] Django server and JS
+- [ ] YouTube video (short), that explains the app in simplicity and brevity
+    - [ ] Either use Adobe and or open source tools like [Shotcut](https://shotcut.org/download/) & [GIMP](https://www.gimp.org/downloads/)
+- [ ] Get user feedback / data
+- [ ] Create a written Business Proposal and present to potential investors
+- [ ] Scale up if the user usage and count increases greatly, but either investing in additional server hardware, Cloud accounts, or time to figure out how to maximize free cloud accounts / api's
