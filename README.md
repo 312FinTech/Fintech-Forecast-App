@@ -39,6 +39,7 @@ conda install -c conda-forge gcc -y
 conda install -c plotly plotly -y
 conda install -c conda-forge prophet -y
 conda install -c anaconda django -y
+conda install -c conda-forge djangorestframework -y
 conda install -c conda-forge jupyterlab -y
 ```
 If you get and error for the `install gcc` use these commands then:
@@ -76,6 +77,12 @@ python ~/anaconda3/envs/forecastappenv/share/kivy-examples/demo/showcase/main.py
 ```
 sudo find / -type d -name '*kivy-examples*'
 ```
+#### To Do Kivy
+- [ ] Build second screen
+    - [ ] Use requests to connect with DRF api
+        - [ ] Decode encode byte code of Ezekial images
+        - [ ] Display Ezekial images to user
+
 
 ## Ezekial Pack (FB Prophet)
 ### Installation
@@ -90,6 +97,7 @@ conda install -c plotly plotly -y
 conda install -c conda-forge prophet -y
 conda install -c anaconda django -y
 conda install -c conda-forge jupyterlab -y
+conda install -c conda-forge djangorestframework -y
 ```
 ```
 mamba activate base
@@ -101,6 +109,7 @@ mamba install -c plotly plotly -y
 mamba install -c conda-forge prophet -y
 mamba install -c anaconda django -y
 mamba install -c conda-forge jupyterlab -y
+mamba install -c conda-forge djangorestframework -t
 ```
 
 ### Methods [(see `yahooprophet.py`)](ezekial/yahooprophet.py)
@@ -128,15 +137,61 @@ def plotly_plot(self):
 ```
 ## Django REST API Endpoints
 [To be used with 312Server.](https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c)
-\
-Commands:
+
+### To Do
+- [ ] Update API by byte encoding images ouput by Ezekial
+
+The Djanog File structure should look similar to the follow tree, after following this section of the `README.md`:
+```
+.
+├── db.sqlite3
+├── manage.py
+├── myapi
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_auto_20220321_0441.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-38.pyc
+│   │       ├── 0002_auto_20220321_0441.cpython-38.pyc
+│   │       └── __init__.cpython-38.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-38.pyc
+│   │   ├── apps.cpython-38.pyc
+│   │   ├── __init__.cpython-38.pyc
+│   │   ├── models.cpython-38.pyc
+│   │   ├── serializers.cpython-38.pyc
+│   │   ├── urls.cpython-38.pyc
+│   │   └── views.cpython-38.pyc
+│   ├── serializers.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+└── mysite
+    ├── asgi.py
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-38.pyc
+    │   ├── settings.cpython-38.pyc
+    │   ├── urls.cpython-38.pyc
+    │   └── wsgi.cpython-38.pyc
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+```
+
+Project Start Commands:
 ```
 django-admin startproject mysite
 cd mysite/
 python manage.py startapp myapi
 ```
 - Add ip address as a string to `ALLOWED_HOSTS = ['']` 
-- Add `'myapi.apps.MyapiConfig',` to `INSTALLED_APPS = [...]` :
+- Add `'myapi.apps.MyapiConfig',` and `'rest_framework',` to `INSTALLED_APPS = [...]` :
 ```
 nano mysite/settings.py
 ```
@@ -149,11 +204,11 @@ Create superUser to login into admin portal:
 ```
 python manage.py createsuperuser
 ```
-Launch the Django server to test the setup config so far ():
+Launch the Django server to test the setup config so far:
 ```
 python manage.py runserver 0.0.0.0:REPLACE_WITH_PORT_NUMBER
 ```
-In your browswer go to `http://YOUR_IP_ADDRESS:PORT_NUMBER_FROM_ABOVE/admin/` and enter in the user name and password credentials you entered previously. (use `localhost` if you are not using your ip and port forwarding)
+In your browser go to `http://YOUR_IP_ADDRESS:PORT_NUMBER_FROM_ABOVE/admin/` and enter in the user name and password credentials you entered previously. (use `localhost` if you are not using your ip and port forwarding)
 
 Use `ctrl + c` (`cmd + .` on macOS) to stop the running Django server
 
@@ -163,6 +218,12 @@ nano myapi/models.py
 ```
 ```
 class ForecastProphet(models.Model):
+    # Will want ticker, date, and chart attribute aka column
+    # The chart attribute will be a byte encoded string of the
+    # image files saved from Ezekial.
+    # Be sure update the fields in ForecastProphetSerializer
+    # This is for creating SQLite DB
+
     ds = models.CharField(max_length=60)
     trend = models.CharField(max_length=60)
     yhat_lower = models.CharField(max_length=60)
@@ -173,11 +234,130 @@ class ForecastProphet(models.Model):
     additive_terms_lower = models.CharField(max_length=60)
     additive_terms_upper = models.CharField(max_length=60)
 
+    # more attributes here
+
     def __str__(self):
-        return self.name
+        # The returned attribute will be what shows up as the entries title in the
+        # admin portial on the djanog site
+        return self.ds
+```
+Tell Django to migrate the changes:
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+Open `myapi/admin.py` to add the `ForecastProphet` Class:
+```
+nano myapi/admin.py
+```
+```
+from .models import ForecastProphet
+
+admin.site.register(ForecastProphet)
+```
+Launch the Django server to test the setup config so far:
+```
+python manage.py runserver 0.0.0.0:REPLACE_WITH_PORT_NUMBER
+```
+You should see the `ForecastProphet` Class now:
+![](images/chrome_PDsFLJgvy2.png)
+Make one entry of dummy data to test the api by clicking on the ***Add*** button next to **Forecast prophets**:
+```
+2022-03-11
+45337.842853
+39381.042603
+49531.552681
+45337.842853
+45337.842853
+-902.314238
+-902.314238
+-902.314238
+```
+The entry will show up like this now:
+![](images/chrome_5HpUAHIbMg.png)
+
+Create a serializer in `myapi/serializers.py` :
+```
+touch myapi/serializers.py
+nano myapi/serializers.py
+```
+```
+# serializers.py
+from rest_framework import serializers
+
+from .models import ForecastProphet
+
+class ForecastProphetSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ForecastProphet
+        fields = ('id', 'ds', 'trend', 'yhat_lower', 'yhat_upper', 'trend_lower',
+         'trend_upper', 'trend_upper', 'additive_terms', 'additive_terms_lower', 
+         'additive_terms_upper') 
+```
+- Query the database for all `Forecast prophets` entries
+- Pass that database queryset into the serializer we just created, so that it gets converted into JSON and rendered
+```
+nano myapi/views.py
+```
+```
+# views.py
+from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import ForecastProphetSerializer
+from .models import ForecastProphet
+
+class ForecastProphetViewSet(viewsets.ModelViewSet):
+    queryset = ForecastProphet.objects.all().order_by('ds')
+    serializer_class = ForecastProphetSerializer
 ```
 
+Update the following lines in `mysite/urls.py` :
+```
+nano mysite/urls.py
+```
+```
+from django.contrib import admin
+from django.urls import path, include
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('myapi.urls')),
+]
+```
+Create `myapi/urls.py` that was pointed to in the above code:
+```
+touch myapi/urls.py
+nano myapi/urls.py
+```
+```
+# myapi/urls.py
+from django.urls import include, path
+from rest_framework import routers
+from . import views
+
+router = routers.DefaultRouter()
+router.register(r'ds', views.ForecastProphetViewSet)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
+urlpatterns = [
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+]
+```
+Start the django server so see if the DRF is setup correctly:
+```
+python manage.py runserver 0.0.0.0:REPLACE_WITH_PORT_NUMBER
+```
+In your browser go to `http://YOUR_IP_ADDRESS:PORT_NUMBER_FROM_ABOVE` it should look similiar to this:
+![](images/DRF_ex.png)
+
+If you click on the URL it will show you the JSON that is returned:
+![](images/chrome_gQWtNxiu1X.png)
+We can access individual instances by appending some index int like this to the url:
+```
+http://YOUR_IP_ADDRESS:PORT_NUMBER_FROM_ABOVE/ds/1
+```
 
 ---
 
