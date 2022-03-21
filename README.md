@@ -6,9 +6,5 @@
 #
 
 ```bash
-python manage.py
-```
-
-```bash
-runserver
+python manage.py runserver
 ```
