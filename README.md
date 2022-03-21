@@ -160,3 +160,4 @@ Or you can just access it from the project dir where it should be located after 
 conda activate forecastappenv
 conda install -c conda-forge pyinstaller -y
 ```
+just checking this GitHub Push Notif in Slack
