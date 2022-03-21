@@ -155,3 +155,6 @@ untitled.ipynb
 .buildozer
 bin
 Untitled.ipynb
+
+# sqlLite DB
+*/db.sqlite3

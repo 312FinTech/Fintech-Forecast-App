@@ -102,10 +102,6 @@ mamba install -c conda-forge prophet -y
 mamba install -c anaconda django -y
 mamba install -c conda-forge jupyterlab -y
 ```
-## Django REST API Endpoints
-[To be used with 312Server.](https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c
-)
-
 
 ### Methods [(see `yahooprophet.py`)](ezekial/yahooprophet.py)
 ```
@@ -130,6 +126,60 @@ def plot(self):
 def plotly_plot(self):
     """Returns plotly plot of forecasted pandas series."""
 ```
+## Django REST API Endpoints
+[To be used with 312Server.](https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c)
+\
+Commands:
+```
+django-admin startproject mysite
+cd mysite/
+python manage.py startapp myapi
+```
+- Add ip address as a string to `ALLOWED_HOSTS = ['']` 
+- Add `'myapi.apps.MyapiConfig',` to `INSTALLED_APPS = [...]` :
+```
+nano mysite/settings.py
+```
+Use `ctrl + x` to close nano, `y` to save
+Setup SQLite DB:
+```
+python manage.py migrate
+```
+Create superUser to login into admin portal:
+```
+python manage.py createsuperuser
+```
+Launch the Django server to test the setup config so far ():
+```
+python manage.py runserver 0.0.0.0:REPLACE_WITH_PORT_NUMBER
+```
+In your browswer go to `http://YOUR_IP_ADDRESS:PORT_NUMBER_FROM_ABOVE/admin/` and enter in the user name and password credentials you entered previously. (use `localhost` if you are not using your ip and port forwarding)
+
+Use `ctrl + c` (`cmd + .` on macOS) to stop the running Django server
+
+Create a class to store the data in `myapi/models.py`:
+```
+nano myapi/models.py
+```
+```
+class ForecastProphet(models.Model):
+    ds = models.CharField(max_length=60)
+    trend = models.CharField(max_length=60)
+    yhat_lower = models.CharField(max_length=60)
+    yhat_upper = models.CharField(max_length=60)
+    trend_lower = models.CharField(max_length=60)
+    trend_upper = models.CharField(max_length=60)
+    additive_terms = models.CharField(max_length=60)
+    additive_terms_lower = models.CharField(max_length=60)
+    additive_terms_upper = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.name
+```
+
+
+
+---
 
 ## [Creating Package for Android](https://kivy.org/doc/stable/guide/packaging-android.html)
 
