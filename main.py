@@ -5,6 +5,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.popup import Popup
 # from kivy.uix.widget import Widget
 # from kivy.properties import ObjectProperty
 
@@ -65,6 +66,14 @@ class LoginScreen(GridLayout):
         When Forecast button is pressed, YahooProphet is called and returns forecast to terminal.
         """
         print("Pressed Forecast Button")
+
+        try:
+            yfp.YahooProphet(self.ticker.text, self.start_date.text, int(self.days_to_forecast.text))
+        except ValueError:
+            popup = Popup(title='Warning', content=Label(text='Invalid Input'), size_hint=(0.5,0.5))
+            popup.open()
+            return
+
         yfp_obj = yfp.YahooProphet(self.ticker.text, self.start_date.text, int(self.days_to_forecast.text))
         # print(yfp_obj.forecast_df().tail(int(self.days_to_forecast.text)))
         pimg = yfp_obj.plot()
