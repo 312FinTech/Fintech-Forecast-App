@@ -1,0 +1,21 @@
+{% extends 'prediction/base.html' %}
+{% block 'body' %}
+<div class="container">
+
+<h1>Make predictions</h1>
+
+<h2>{{ note }}</h2>
+
+<form action="{% url 'predictions' %}" method="post">
+  {% csrf_token %}
+    {{ formset.management_form }}
+
+    {% for form in formset %}
+      {{ form }}
+      <br><br>
+    {% endfor %}
+    <input type="submit" value="Make Predictions" />
+  </form>
+
+</div>
+{% endblock %}

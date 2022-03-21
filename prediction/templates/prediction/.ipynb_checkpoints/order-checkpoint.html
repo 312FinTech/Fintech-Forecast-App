@@ -1,0 +1,41 @@
+{% extends 'pizza/base.html' %}
+{% block 'body' %}
+{% load widget_tweaks %}
+
+    <div class="container">
+
+      <h1>Order a Pizza</h1>
+
+      <h2>{{ note }}</h2>
+          {% if created_pizza_pk %}
+          <h2><a href="{% url 'edit_order' created_pizza_pk %}">Edit Your Order</a></h2>
+          {% endif %}
+
+
+      <form action="{% url 'order' %}" method="post">
+          {% csrf_token %}
+          {% for field in pizzaform %}
+        <div class="form-group {%if field.errors %}alert alert-danger{%endif%}">
+
+
+            {{ field.errors }}
+            {{ field.label_tag }}
+            {% render_field field class="form-control" %}
+
+
+        </div>
+        {% endfor %}
+
+          <input type="submit" value="Order Pizza">
+      </form>
+
+      <br><br>
+      Want more than one pizza?
+      <form action="{% url 'pizzas' %}" method="get">
+        {% csrf_token %}
+        {{ multiple_form }}
+        <input type="submit" value="Get Pizzas">
+      </form>
+
+    </div>
+{% endblock %}
