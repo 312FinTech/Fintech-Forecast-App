@@ -1,4 +1,8 @@
 # Fintech-Forecast-App
+
+[312 Main Website](https://megalodon-harpsichord-6cj7.squarespace.com/)
+**Password protected in this stage of dev.*
+
 A [Kivy](https://kivy.org/#home) app that uses ML/DL to forecast input ticker symbols and returns a chart of the forecast. Kivy can be deployed on Android, iOS, MacOS, Windows, & Linux OS's.
 
 UI Concept
@@ -7,12 +11,16 @@ UI Concept
 
 ![](UI_Options/ex2.png)
 
-Beta v1.0
+Mobile and Desktop Beta v1.0
 
 ![](images/v1_chart_return_1.gif)
 
 BTC Forecast Using FB Prophet
 ![](images/newplot.png)
+
+Web App Beta v1.0
+
+![](images/web_app_v1.png)
 
 # Plan
 ![](images/Project_Plan.png)
@@ -41,6 +49,7 @@ conda install -c conda-forge prophet -y
 conda install -c anaconda django -y
 conda install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
+conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
 ```
 If you get and error for the `install gcc` use these commands then:
@@ -56,6 +65,7 @@ conda install -c conda-forge prophet -y
 conda install -c anaconda django -y
 conda install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
+conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
 ```
 ### Kivy Install
@@ -102,6 +112,7 @@ conda install -c anaconda django -y
 conda install -c conda-forge jupyterlab -y
 conda install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
+conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
 ```
 ```
@@ -116,6 +127,7 @@ mamba install -c anaconda django -y
 mamba install -c conda-forge jupyterlab -y
 mamba install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
+mamba install -c conda-forge python-dotenv -y
 mamba install -c conda-forge jupyterlab -y
 ```
 
