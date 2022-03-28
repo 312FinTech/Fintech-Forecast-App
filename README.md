@@ -40,6 +40,7 @@ conda install -c plotly plotly -y
 conda install -c conda-forge prophet -y
 conda install -c anaconda django -y
 conda install -c conda-forge djangorestframework -y
+yes | pip install django-widget-tweaks
 conda install -c conda-forge jupyterlab -y
 ```
 If you get and error for the `install gcc` use these commands then:
@@ -53,6 +54,8 @@ pip install pystan==2.19.1.1
 conda install -c plotly plotly -y
 conda install -c conda-forge prophet -y
 conda install -c anaconda django -y
+conda install -c conda-forge djangorestframework -y
+yes | pip install django-widget-tweaks
 conda install -c conda-forge jupyterlab -y
 ```
 ### Kivy Install
@@ -80,9 +83,9 @@ sudo find / -type d -name '*kivy-examples*'
 #### To Do Kivy
 - [ ] Build second screen
     - [ ] Use requests to connect with DRF api
-        - [ ] Decode encode byte code of Ezekial images
-        - [ ] Display Ezekial images to user
-
+        - [x] Decode encode byte code of Ezekial images
+            - [ ] Make more efficient.
+        - [x] Display Ezekial images to user
 
 ## Ezekial Pack (FB Prophet)
 ### Installation
@@ -98,6 +101,8 @@ conda install -c conda-forge prophet -y
 conda install -c anaconda django -y
 conda install -c conda-forge jupyterlab -y
 conda install -c conda-forge djangorestframework -y
+yes | pip install django-widget-tweaks
+conda install -c conda-forge jupyterlab -y
 ```
 ```
 mamba activate base
@@ -109,7 +114,9 @@ mamba install -c plotly plotly -y
 mamba install -c conda-forge prophet -y
 mamba install -c anaconda django -y
 mamba install -c conda-forge jupyterlab -y
-mamba install -c conda-forge djangorestframework -t
+mamba install -c conda-forge djangorestframework -y
+yes | pip install django-widget-tweaks
+mamba install -c conda-forge jupyterlab -y
 ```
 
 ### Methods [(see `yahooprophet.py`)](ezekial/yahooprophet.py)
@@ -140,6 +147,7 @@ def plotly_plot(self):
 
 ### To Do
 - [ ] Update API by byte encoding images ouput by Ezekial
+- [ ] Merge necessary portions of `djanog-jt` branch (reproducing instuctions with code blocks preffered)
 
 The Djanog File structure should look similar to the follow tree, after following this section of the `README.md`:
 ```
@@ -405,6 +413,7 @@ conda install -c conda-forge pyinstaller -y
     - [ ] Metrics showing how often the forecast was correct on new data (NOT backtesting) both in terms of the second derivative (increase or decrease) and the distance from the actual change in price
 - [ ] Rebuild Front end for each platform (i.e. Android studio [might be able to get to work for iOS too])
 - [ ] Website and Dashboard
+    - [ ] Continue with Website and web app dev
     - [ ] Django server and JS
 - [ ] YouTube video (short), that explains the app in simplicity and brevity
     - [ ] Either use Adobe and or open source tools like [Shotcut](https://shotcut.org/download/) & [GIMP](https://www.gimp.org/downloads/)

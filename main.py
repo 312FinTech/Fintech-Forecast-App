@@ -36,7 +36,6 @@ class LoginScreen(GridLayout):
         self.inside = GridLayout()
         self.inside.cols = 2
 
-        # Points to image file. ADD PATHLIB PATH OBJ HERE
         wimg = Image(source='images/312fintech_ver04.png')
         self.add_widget(wimg)
 
@@ -64,15 +63,32 @@ class LoginScreen(GridLayout):
         """
         When Forecast button is pressed, YahooProphet is called and returns forecast to terminal.
         """
-        print("Pressed Forecast Button")
-        yfp_obj = yfp.YahooProphet(self.ticker.text, self.start_date.text, int(self.days_to_forecast.text))
-        # print(yfp_obj.forecast_df().tail(int(self.days_to_forecast.text)))
-        pimg = yfp_obj.plot()
-        pimg.savefig('images/forecast.png')
+        # print("Pressed Forecast Button")
+        # yfp_obj = yfp.YahooProphet(self.ticker.text, self.start_date.text, int(self.days_to_forecast.text))
+        # # print(yfp_obj.forecast_df().tail(int(self.days_to_forecast.text)))
+        # pimg = yfp_obj.plot()
+        # pimg.savefig('images/forecast.png')
 
-        # time.sleep(3)
-        pimg = Image(source='images/forecast.png')
+        # # time.sleep(3)
+        # pimg = Image(source='images/forecast.png')
+        # self.add_widget(pimg)
+
+
+        ######################################
+        ## CHECKING EZEKIAL DECODING METHOD ##
+        ###  TO BE REPLAECD WITH API CALL  ###
+        ######################################
+        print("Pressed Forecast Button")
+
+        yfp_obj = yfp.YahooProphet(self.ticker.text, self.start_date.text, int(self.days_to_forecast.text))
+        ####################################################################
+        yfp_obj.encode_plot()
+        yfp_obj.decode_plot()
+        ## Load decoded image
+        # forecast_decoded_img_path = Path('images/forecast_temp/decoded.png')
+        pimg = Image(source='images/forecast_temp/decoded.png')
         self.add_widget(pimg)
+
 
 
 class ForecastWindow(Screen):
