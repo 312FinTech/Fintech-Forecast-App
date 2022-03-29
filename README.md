@@ -13,7 +13,7 @@ UI Concept
 
 Mobile and Desktop Beta v1.0
 
-![](images/v1_chart_return_1.gif)
+![](images/v1_chart_return_1.gif) ![](images/v1-1_chart_return.gif)
 
 BTC Forecast Using FB Prophet
 ![](images/newplot.png)
