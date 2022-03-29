@@ -91,8 +91,9 @@ python ~/anaconda3/envs/forecastappenv/share/kivy-examples/demo/showcase/main.py
 sudo find / -type d -name '*kivy-examples*'
 ```
 #### To Do Kivy
+- [ ] Debug entering tickers consecutively
 - [ ] Build second screen
-    - [ ] Use requests to connect with DRF api
+    - [x] Use requests to connect with DRF api
         - [x] Decode encode byte code of Ezekial images
             - [ ] Make more efficient.
         - [x] Display Ezekial images to user
@@ -237,6 +238,7 @@ Create a class to store the data in `myapi/models.py`:
 nano myapi/models.py
 ```
 ```
+# Create your models here.
 class ForecastProphet(models.Model):
     # Will want ticker, date, and chart attribute aka column
     # The chart attribute will be a byte encoded string of the
@@ -244,22 +246,15 @@ class ForecastProphet(models.Model):
     # Be sure update the fields in ForecastProphetSerializer
     # This is for creating SQLite DB
 
-    ds = models.CharField(max_length=60)
-    trend = models.CharField(max_length=60)
-    yhat_lower = models.CharField(max_length=60)
-    yhat_upper = models.CharField(max_length=60)
-    trend_lower = models.CharField(max_length=60)
-    trend_upper = models.CharField(max_length=60)
-    additive_terms = models.CharField(max_length=60)
-    additive_terms_lower = models.CharField(max_length=60)
-    additive_terms_upper = models.CharField(max_length=60)
+    ticker = models.CharField(max_length=10)
+    encoded_string = models.TextField() 
 
     # more attributes here
 
     def __str__(self):
         # The returned attribute will be what shows up as the entries title in the
-        # admin portial on the djanog site
-        return self.ds
+        # admin portial on the django site
+        return self.ticker
 ```
 Tell Django to migrate the changes:
 ```
@@ -277,21 +272,14 @@ admin.site.register(ForecastProphet)
 ```
 Launch the Django server to test the setup config so far:
 ```
-python manage.py runserver 0.0.0.0:REPLACE_WITH_PORT_NUMBER
+python manage.py runserver 0.0.0.0:REPLACE_WITH_PORT_NUMBER/admin
 ```
 You should see the `ForecastProphet` Class now:
 ![](images/chrome_PDsFLJgvy2.png)
 Make one entry of dummy data to test the api by clicking on the ***Add*** button next to **Forecast prophets**:
 ```
-2022-03-11
-45337.842853
-39381.042603
-49531.552681
-45337.842853
-45337.842853
--902.314238
--902.314238
--902.314238
+BTC-USD
+ASFWEFWEFWAFASDFWEFAEWF23F23F23FEAFEW
 ```
 The entry will show up like this now:
 ![](images/chrome_5HpUAHIbMg.png)
@@ -310,9 +298,7 @@ from .models import ForecastProphet
 class ForecastProphetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ForecastProphet
-        fields = ('id', 'ds', 'trend', 'yhat_lower', 'yhat_upper', 'trend_lower',
-         'trend_upper', 'trend_upper', 'additive_terms', 'additive_terms_lower', 
-         'additive_terms_upper') 
+        fields = ('id', 'ticker', 'encoded_string')
 ```
 - Query the database for all `Forecast prophets` entries
 - Pass that database queryset into the serializer we just created, so that it gets converted into JSON and rendered
@@ -327,7 +313,7 @@ from .serializers import ForecastProphetSerializer
 from .models import ForecastProphet
 
 class ForecastProphetViewSet(viewsets.ModelViewSet):
-    queryset = ForecastProphet.objects.all().order_by('ds')
+    queryset = ForecastProphet.objects.all().order_by('ticker')
     serializer_class = ForecastProphetSerializer
 ```
 
@@ -356,7 +342,7 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'ds', views.ForecastProphetViewSet)
+router.register(r'ticker', views.ForecastProphetViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
@@ -378,6 +364,7 @@ We can access individual instances by appending some index int like this to the 
 ```
 http://YOUR_IP_ADDRESS:PORT_NUMBER_FROM_ABOVE/ds/1
 ```
+**This is helpful for when we use `.delete()` with `requests`*
 
 ---
 

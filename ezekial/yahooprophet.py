@@ -7,11 +7,47 @@ import base64
 from pathlib import Path
 
 class YahooProphet:
-    """Class that accepts a yahoo finance `yf_ticker`, `start_date` (yyyy-dd-mm), `forecast_ahead`
+    """
+    Class that accepts a yahoo finance `yf_ticker`, `start_date` (yyyy-dd-mm), `forecast_ahead`
     Used with `forecast_df()`, `plot()`, `plotly_plot()`, & `forecast_all()` methods. For more info on FB Prophet visit.
-    https://facebook.github.io/prophet/docs/quick_start.html#python-api"""
+    https://facebook.github.io/prophet/docs/quick_start.html#python-api
     
-    def __init__(self, yf_ticker, start_date, forecast_ahead):
+    Parameters
+    ----------
+    ticker_path : str
+        Path from function to ticker data.
+        Should be a .csv file with a header col named 'Symbol'.
+        Selects top 500 tickers, due to yfinance public ip api limits.
+        Defaults to data/S&P500 tickers.csv
+    
+    yf_ticker : str
+        Must be ticker accepted by yfinance.
+        Default ticker is 'BTC-USD'
+        
+    start_date : str
+        YYYY-MM-DD format, this is the start date of the returned df.
+        Defaults to 2019-1-1
+        
+    forecast_ahead : int
+        Number of days for FB Prophet to forecast.
+        Defaults to 90.
+    
+    See Also
+    --------
+    yfinance.Ticker() : https://pypi.org/project/yfinance/
+    prophet.Prophet() : https://facebook.github.io/prophet/docs/quick_start.html#python-api
+
+    Examples
+    --------
+    >>> YahooProphet()
+    
+    >>> 
+    
+    >>> 
+    
+    """
+    
+    def __init__(self, yf_ticker='BTC-USD', start_date='2019-1-1', forecast_ahead=90):
         self.yf_ticker = yf_ticker
         self.start_date = start_date
         self.forecast_ahead = forecast_ahead
@@ -81,13 +117,14 @@ class YahooProphet:
         with open(forecast_img_path, "rb") as image2string:
             converted_string = base64.b64encode(image2string.read())
             
+        return converted_string
 #         # Save converted string to .bin file
 #         # USE POST METHOD ON THE API INSTEAD
-        forecast_img_path = Path('images/forecast_temp/encoded.bin')
-        with open(forecast_img_path, "wb") as file:
-            file.write(converted_string)
-        
-        print(f"Successfully saved {self.yf_ticker} image.")
+        # forecast_img_path = Path('images/forecast_temp/encoded.bin')
+        # with open(forecast_img_path, "wb") as file:
+        #     file.write(converted_string)
+            # file.close()
+        # print(f"Successfully saved {self.yf_ticker} image.")
         # self.yf_ticker
         
     def decode_plot(self):
