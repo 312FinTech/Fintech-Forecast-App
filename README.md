@@ -247,6 +247,7 @@ class ForecastProphet(models.Model):
     # This is for creating SQLite DB
 
     ticker = models.CharField(max_length=10)
+    time = models.CharField(max_length=15)
     encoded_string = models.TextField() 
 
     # more attributes here
@@ -298,7 +299,7 @@ from .models import ForecastProphet
 class ForecastProphetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ForecastProphet
-        fields = ('id', 'ticker', 'encoded_string')
+        fields = ('id', 'ticker', 'time', 'encoded_string')
 ```
 - Query the database for all `Forecast prophets` entries
 - Pass that database queryset into the serializer we just created, so that it gets converted into JSON and rendered

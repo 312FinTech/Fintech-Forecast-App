@@ -1,43 +1,49 @@
+import requests
+from dotenv import load_dotenv
+import os
 import pandas as pd
 from prophet import Prophet
 # from ezekial.prophet import Prophet
-import yfinance as yf
-# https://facebook.github.io/prophet/docs/quick_start.html#python-api
 import base64
 from pathlib import Path
 
-class YahooProphet:
+class AlphaProphet:
     """
-    Class that accepts a yahoo finance `yf_ticker`, `start_date` (yyyy-dd-mm), `forecast_ahead`
-    Used with `forecast_df()`, `plot()`, `plotly_plot()`, `forecast_all()`, 'encode_plot' methods. For more info on FB Prophet visit.
+    Class that accepts a Alpa Vantage key `alpha_key`, alpha_ticker, `time_interval` (1min, 5min, 15min, 30min, 60min), 'forecast_ahead'
+    Used with `forecast_df()`, `plot()`, `plotly_plot()`, `forecast_all()`, 'encode_plot' methods. For more info on FB Prophet & the Alpha Vantage API visit.
     https://facebook.github.io/prophet/docs/quick_start.html#python-api
+    https://www.alphavantage.co/
     
     Parameters
     ----------
-    yf_ticker : str
+    alpha_key : str
+        NEEDED, key provided from:
+        https://www.alphavantage.co/
+
+    alpha_ticker : str
         Must be ticker accepted by yfinance.
-        Default ticker is 'BTC-USD'
-        
-    start_date : str
-        YYYY-MM-DD format, this is the start date of the returned df.
-        Defaults to 2019-1-1
+        Default ticker is 'IWL'
+
+    time_interval : str
+        Time interval between two consecutive data points in the time series. The following values are supported: 1min, 5min, 15min, 30min, 60min
+        Defaults to '60min'.
         
     forecast_ahead : int
         Number of days for FB Prophet to forecast.
         Defaults to 90.
-
+    
     forecast_img_path : str
         Path to dir where encoded plot images are to be saved.
         Defaults to 'images/forecast_temp/forecast.png'.
-
+    
     See Also
     --------
-    yfinance.Ticker() : https://pypi.org/project/yfinance/
+    https://www.alphavantage.co/
     prophet.Prophet() : https://facebook.github.io/prophet/docs/quick_start.html#python-api
 
     Examples
     --------
-    >>> YahooProphet()
+    >>> AlphaProphet()
     
     >>> 
     
@@ -45,23 +51,27 @@ class YahooProphet:
     
     """
     
-    def __init__(self, yf_ticker='BTC-USD', start_date='2019-1-1', forecast_ahead=90, forecast_img_path='images/forecast_temp/forecast.png'):
-        self.yf_ticker = yf_ticker
-        self.start_date = start_date
+    def __init__(self, alpha_key, alpha_ticker='IWL', time_interval='60min', forecast_ahead=12, forecast_img_path='images/forecast_temp/forecast.png'):
+        self.alpha_key = alpha_key
+        self.alpha_ticker = alpha_ticker
+        self.time_interval = time_interval
         self.forecast_ahead = forecast_ahead
         self.forecast_img_path = forecast_img_path
     
+        url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={self.alpha_ticker}&interval={self.time_interval}&apikey={self.alpha_key}'
+        r = requests.get(url)
+        data = r.json()
+    
+    
         df0 = pd.DataFrame()
-        df0 = yf.Ticker(self.yf_ticker).history(start=self.start_date)['Close'].rename(self.yf_ticker)
-        
-        df_prophet = pd.DataFrame()
+        df0 = pd.DataFrame(data[f'Time Series ({self.time_interval})']).T
+    
         # Facebook Prophet needs one column named 'ds' & 'y'
-        df_prophet['y'] = df0
-
+        df_prophet = pd.DataFrame()
+        df_prophet['y'] = df0['4. close']
         df_prophet['ds'] = df_prophet.index
         df_prophet = df_prophet[['ds','y']]
-        df_prophet.reset_index(drop=True, inplace=True)
-        
+        df_prophet.reset_index(drop=True, inplace=True)        
         
         m = Prophet()
         m.fit(df_prophet)
@@ -117,8 +127,8 @@ class YahooProphet:
             converted_string = base64.b64encode(image2string.read())
             
         return converted_string
-
-    # For Testing Purposes Only
+        
+        # For Testing Purposes Only
     # def decode_plot(self):
     #     """
     #     Decodes plot from encode_plot() and saves as,
