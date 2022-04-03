@@ -22,12 +22,38 @@ import os
 import base64
 from pathlib import Path
 
+# class save_ticker_image:
+#     def __init__(self, url, img_path, ticker, time):
+#         self.url = url
+#         self.img_path = img_path
+#         self.ticker = ticker
+#         self.time = time
+    
+#     def django_get(self):
+#         response = requests.get(self.url)
+#         response_json = response.json()
+#         return response_json
+
+#     def select_ticker(self):
+#         django_api_dict = self.django_get()
+#         for dictionary in django_api_dict:   
+#             try:
+#                 if dictionary['ticker'] == self.ticker and dictionary['time'] == self.time:
+#                     encoded_plot = dictionary['encoded_string']
+#             except: return print("Ticker Not Found in Forecast Database")
+#         # Decode string and save as a .png
+#         try:
+#             decodeit = open(self.img_path, 'wb')
+#             decodeit.write(base64.b64decode(encoded_plot[2:].encode()))
+#             decodeit.close()
+#             print("Image Saved Successfully")
+#         except: return print("Could Not Save Plot Ticker Not Found")
+
 class save_ticker_image:
-    def __init__(self, url, img_path, ticker, time):
+    def __init__(self, url, img_path, ticker):
         self.url = url
         self.img_path = img_path
         self.ticker = ticker
-        self.time = time
     
     def django_get(self):
         response = requests.get(self.url)
@@ -38,7 +64,7 @@ class save_ticker_image:
         django_api_dict = self.django_get()
         for dictionary in django_api_dict:   
             try:
-                if dictionary['ticker'] == self.ticker and dictionary['time'] == self.time:
+                if dictionary['ticker'] == self.ticker:
                     encoded_plot = dictionary['encoded_string']
             except: return print("Ticker Not Found in Forecast Database")
         # Decode string and save as a .png
@@ -76,9 +102,9 @@ class LoginScreen(GridLayout):
         self.ticker = TextInput(multiline=False)
         self.inside.add_widget(self.ticker)
 
-        self.inside.add_widget(Label(text='Time (Day, 60min): '))
-        self.time = TextInput(multiline=False)
-        self.inside.add_widget(self.time)
+        # self.inside.add_widget(Label(text='Time (Day, 60min): '))
+        # self.time = TextInput(multiline=False)
+        # self.inside.add_widget(self.time)
         
         # self.inside.add_widget(Label(text='Start Data From: \n(YYYY-MM-DD)'))
         # self.start_date = TextInput(multiline=False)
@@ -109,7 +135,8 @@ class LoginScreen(GridLayout):
         url = os.getenv("DJANGO_SERVER_URL")
         forecast_decoded_img_path = Path('images/forecast_temp/decoded.png')
 
-        save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text, time=self.time.text).select_ticker()
+        # save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text, time=self.time.text).select_ticker()
+        save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text).select_ticker()
         # time.sleep(1)
         
         pimg = Image(source='images/forecast_temp/decoded.png')

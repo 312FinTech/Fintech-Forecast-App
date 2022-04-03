@@ -51,6 +51,7 @@ conda install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
 conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
+conda install -c conda-forge runipy -y
 ```
 If you get and error for the `install gcc` use these commands then:
 ```
@@ -67,6 +68,7 @@ conda install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
 conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
+conda install -c conda-forge runipy -y
 ```
 ### Kivy Install
 ```
@@ -115,6 +117,7 @@ conda install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
 conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
+conda install -c conda-forge runipy -y
 ```
 ```
 mamba activate base
@@ -130,37 +133,28 @@ mamba install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
 mamba install -c conda-forge python-dotenv -y
 mamba install -c conda-forge jupyterlab -y
+mamba install -c conda-forge runipy -y
 ```
 
-### Methods [(see `yahooprophet.py`)](ezekial/yahooprophet.py)
+### Update Server [(see `update_server.py`)](update_server.py)
+### To Do
+![](images/WindowsTerminal_CSicAHjpNk.gif) ![](images/WindowsTerminal_Gl3OSYr0W2.gif)
+- [x] Clean up [`update_server.py`](update_server.py)
+- [ ] Setup `cron` tab scheduler for when yfinance is updated after market close
 ```
-class YahooProphet:
-    """Class that accepts a yahoo finance `yf_ticker`, `start_date` (yyyy-dd-mm), `forecast_ahead`
-    Used with `forecast_df()`, `plot()`, `plotly_plot()`, & `forecast_all()` methods. For more info on FB Prophet visit.
-    https://facebook.github.io/prophet/docs/quick_start.html#python-api"""
-```
-```
-def forecast_all(self):
-    """Returns a Facebook Prophet dataframe and forecast charts."""
-```
-```
-def forecast_df(self):
-    """Returns a Facebook Prophet dataframe."""
-```
-```
-def plot(self):
-    """Returns 4 charts on forecast of input pandas series."""
-```
-```
-def plotly_plot(self):
-    """Returns plotly plot of forecasted pandas series."""
+conda activate forecastappenv
+ipython ~/python_proj/Fintech-Forecast-App/update_server.py
 ```
 ## Django REST API Endpoints
 [To be used with 312Server.](https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c)
 
 ### To Do
-- [ ] Update API by byte encoding images ouput by Ezekial
+- [x] Update API by byte encoding images ouput by Ezekial
 - [ ] Merge necessary portions of `djanog-jt` branch (reproducing instuctions with code blocks preffered)
+- [ ] Update Alpha Vantage data scraping methods
+- [ ] Setup server to execute functions from [`drf_tools.py`](drf_tools.py)
+- [ ] Quantify Emoticon's from Prophet DF
+- [ ] Make Sentiment Analysis Class
 
 The Djanog File structure should look similar to the follow tree, after following this section of the `README.md`:
 ```
@@ -412,7 +406,7 @@ conda install -c conda-forge pyinstaller -y
 - [ ] Create documents showcasing metrics of the app
     - [ ] Metrics showing how often the forecast was correct on new data (NOT backtesting) both in terms of the second derivative (increase or decrease) and the distance from the actual change in price
 - [ ] Rebuild Front end for each platform (i.e. Android studio [might be able to get to work for iOS too])
-- [ ] Website and Dashboard
+- [x] Website and Dashboard
     - [ ] Continue with Website and web app dev
     - [ ] Django server and JS
 - [ ] YouTube video (short), that explains the app in simplicity and brevity
