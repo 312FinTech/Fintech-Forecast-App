@@ -136,25 +136,54 @@ mamba install -c conda-forge jupyterlab -y
 mamba install -c conda-forge runipy -y
 ```
 
-### Update Server [(see `update_server.py`)](update_server.py)
+### Update Server [(see `update.ipynb`)](update.ipynb)
 ### To Do
 ![](images/WindowsTerminal_CSicAHjpNk.gif) ![](images/WindowsTerminal_Gl3OSYr0W2.gif)
 - [x] Clean up [`update_server.py`](update_server.py)
+- [ ] Use multiprocessing for the remainder of the functions that are computationaly expensive.
+- [ ] Determine:
+    - seconds to run each model per ticker (what is our max permitted runtime?)
+    - how many days worth of data to use for a training dataset
+    - how far we should forecast in advance
+    - how many days we want the user to see (have it set to 10 right now)
+- [ ] Make class/method that accepts regex pattern of `ENVIRONMENTAL VARIABLE` names and uses different keys if API functions throw error.
+    - [ ] Update alias email `.csv` with additional keys
+    - [ ] Update Alpha Vantage data scraping methods
+    - [ ] Make Sentiment Analysis Class
+- [ ] Create
 - [ ] Setup `cron` tab scheduler for when yfinance is updated after market close
+- [ ] [PySpark if larger Dataset?](https://www.analyticsvidhya.com/blog/2022/01/apache-spark-and-facebook-prophet/)
+### About
+Ipython Notebook file accepts four postional arguements and is inteded to be launched from the shell via a Linux cron tab at regular time intervals. See ***Arguements*** for details. * Django server endpoint url is to be included in the [`.env`](.env) file
+### Arguements
+The positional arguements are to be in this order (see markdown cell for ex. usage):
+1. *weeeks_prior_data_end_date* **int**: number of weeks prior from **today** that the data will be acquired from (*may increase runtime*)
+2. *forecast_days_ahead* **int**:  number of days to forecast from latest date
+3. *ticker_path* **str**: path and file name to pull tickers from (must be yfinance format) 
+4. *forecast_img_path* **str**: path and file name to save plot images to be byte string encoded
 ```
 conda activate forecastappenv
-ipython ~/python_proj/Fintech-Forecast-App/update_server.py
+cd ~/python_proj/Fintech-Forecast-App/
+ipython update.ipynb 1300 90 'data/S&P500 tickers.csv' images/forecast_temp/forecast.png
 ```
 ## Django REST API Endpoints
 [To be used with 312Server.](https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c)
 
 ### To Do
 - [x] Update API by byte encoding images ouput by Ezekial
-- [ ] Merge necessary portions of `djanog-jt` branch (reproducing instuctions with code blocks preffered)
+- [ ] Purchase DDR3 RAM for server (4 GB max per stick!)
+- [ ]Update `time` column to be larger than 15 chars (include hour and minutes)
 - [ ] Update Alpha Vantage data scraping methods
-- [ ] Setup server to execute functions from [`drf_tools.py`](drf_tools.py)
-- [ ] Quantify Emoticon's from Prophet DF
+- [x] Setup server to execute functions from [`drf_tools.py`](drf_tools.py)
+- [x] Quantify Emoticon's from Prophet DF
+    - [ ] Dig deeper beyond `pct_change()`
 - [ ] Make Sentiment Analysis Class
+    - [ ] Plug in col to SQL DB 
+- [ ] [Find more efficient way to use DRF](https://github.com/encode/django-rest-framework)
+    - [ ] More endpoints rather than Django Servers
+    - [ ] Update the DQL DB with new data, rather than clearing entire DB and repopulating it
+- Setup HTTPS?
+- [ ] Merge necessary portions of `djanog-jt` branch (reproducing instuctions with code blocks preffered)
 
 The Djanog File structure should look similar to the follow tree, after following this section of the `README.md`:
 ```
@@ -401,16 +430,37 @@ conda install -c conda-forge pyinstaller -y
 # Future Features / Models / To Do (Please add to this)
 
 - [ ] Multivariate Model
-    - [ ] AutoML (Kats)?
+    - [ ] FB Prophet and Nueral Prophet multivariate?
+        - [ ] see [this](https://stackoverflow.com/questions/54544285/is-it-possible-to-do-multivariate-multi-step-forecasting-using-fb-prophet) and [that](https://www.kaggle.com/code/bagavathypriya/multivariate-time-series-using-fb-prophet/notebook)
+    - [ ] Determine what features should be (adj close / cur_price, ticker(s) [categorize by sector?], sentiment score)
+        - [ ] Feature Importance (re-ask Best Buy R&D Team Leader for alt. approach)
+    - [ ] AutoML 
+        - [ ] Kats? (investigate additional univariate models as well, including Holt Winters)
+        - [ ] AutoKeras (for classification purposes only)
+        - [ ] Investigate additional libraries (TF, PyTorch, others?)
     - [ ] Save pickle file for model and use for forecast, as to not retrain the model on each api call
+    - [ ] Optimize runtime performance
 - [ ] Create documents showcasing metrics of the app
     - [ ] Metrics showing how often the forecast was correct on new data (NOT backtesting) both in terms of the second derivative (increase or decrease) and the distance from the actual change in price
 - [ ] Rebuild Front end for each platform (i.e. Android studio [might be able to get to work for iOS too])
+    - [ ] [C++](https://www.boden.io/), [Java](https://www.freecodecamp.org/news/how-to-make-a-cross-platform-mobile-app-in-java-5f8eae071ff2/amp/), Kotlin?
+    ![](images/opensource_app_dev_frameworks.png)
+    [*source](https://www.netsolutions.com/insights/cross-platform-app-frameworks-in-2019/)
+    ![](images/cross-platform-frameworks.png)
+    [*source](https://www.moveoapps.com/blog/best-cross-platform-app-development-frameworks/#:~:text=Wrapping%20up,options%20like%20Ionic%20and%20Xamarin.)
 - [x] Website and Dashboard
     - [ ] Continue with Website and web app dev
     - [ ] Django server and JS
 - [ ] YouTube video (short), that explains the app in simplicity and brevity
     - [ ] Either use Adobe and or open source tools like [Shotcut](https://shotcut.org/download/) & [GIMP](https://www.gimp.org/downloads/)
 - [ ] Get user feedback / data
+    - [ ] Create survey for users to fill out on first time use (asl, income, etc?)
+    - [ ] Create seperate DB server side to hold data from survey
+    - [ ] Create seperate DB server side to hold data from users api calls (time of call, ticker)
+        - [ ] Create script that connects to the DB and performs analytics on user data (forecast?, kmeans?)
+            - [ ] Determine peak usage times
+            - [ ] Determine top users and by using `groupby`
+    - [ ] Add API POST `requests` when user uses GET `requests`
 - [ ] Create a written Business Proposal and present to potential investors
 - [ ] Scale up if the user usage and count increases greatly, but either investing in additional server hardware, Cloud accounts, or time to figure out how to maximize free cloud accounts / api's
+    - [ ] Setup (backup) free server on [Heroku](https://rapidapi.com/blog/python-django-rest-api-tutorial/)
