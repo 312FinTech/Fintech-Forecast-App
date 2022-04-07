@@ -51,7 +51,7 @@ conda install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
 conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
-conda install -c conda-forge runipy -y
+yes | pip install neuralprophet[live]
 ```
 If you get and error for the `install gcc` use these commands then:
 ```
@@ -68,7 +68,7 @@ conda install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
 conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
-conda install -c conda-forge runipy -y
+yes | pip install neuralprophet[live]
 ```
 ### Kivy Install
 ```
@@ -93,7 +93,7 @@ python ~/anaconda3/envs/forecastappenv/share/kivy-examples/demo/showcase/main.py
 sudo find / -type d -name '*kivy-examples*'
 ```
 #### To Do Kivy
-- [ ] Debug entering tickers consecutively
+- [x] Debug entering tickers consecutively
 - [ ] Build second screen
     - [x] Use requests to connect with DRF api
         - [x] Decode encode byte code of Ezekial images
@@ -117,7 +117,7 @@ conda install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
 conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
-conda install -c conda-forge runipy -y
+yes | pip install neuralprophet[live]
 ```
 ```
 mamba activate base
@@ -133,14 +133,14 @@ mamba install -c conda-forge djangorestframework -y
 yes | pip install django-widget-tweaks
 mamba install -c conda-forge python-dotenv -y
 mamba install -c conda-forge jupyterlab -y
-mamba install -c conda-forge runipy -y
+yes | pip install neuralprophet[live]
 ```
 
 ### Update Server [(see `update.ipynb`)](update.ipynb)
 ### To Do
 ![](images/WindowsTerminal_CSicAHjpNk.gif) ![](images/WindowsTerminal_Gl3OSYr0W2.gif)
 - [x] Clean up [`update_server.py`](update_server.py)
-- [ ] Use multiprocessing for the remainder of the functions that are computationaly expensive.
+- [x] Use multiprocessing for the remainder of the functions that are computationaly expensive.
 - [ ] Determine:
     - seconds to run each model per ticker (what is our max permitted runtime?)
     - how many days worth of data to use for a training dataset
@@ -150,7 +150,6 @@ mamba install -c conda-forge runipy -y
     - [ ] Update alias email `.csv` with additional keys
     - [ ] Update Alpha Vantage data scraping methods
     - [ ] Make Sentiment Analysis Class
-- [ ] Create
 - [ ] Setup `cron` tab scheduler for when yfinance is updated after market close
 - [ ] [PySpark if larger Dataset?](https://www.analyticsvidhya.com/blog/2022/01/apache-spark-and-facebook-prophet/)
 ### About
@@ -164,7 +163,7 @@ The positional arguements are to be in this order (see markdown cell for ex. usa
 ```
 conda activate forecastappenv
 cd ~/python_proj/Fintech-Forecast-App/
-ipython update.ipynb 1300 90 'data/S&P500 tickers.csv' images/forecast_temp/forecast.png
+ipython update.ipynb 104 90 'data/S&P500 tickers.csv' images/forecast_temp/forecast.png
 ```
 ## Django REST API Endpoints
 [To be used with 312Server.](https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c)
@@ -172,7 +171,7 @@ ipython update.ipynb 1300 90 'data/S&P500 tickers.csv' images/forecast_temp/fore
 ### To Do
 - [x] Update API by byte encoding images ouput by Ezekial
 - [ ] Purchase DDR3 RAM for server (4 GB max per stick!)
-- [ ]Update `time` column to be larger than 15 chars (include hour and minutes)
+- [x]Update `time` column to be larger than 15 chars (include hour and minutes)
 - [ ] Update Alpha Vantage data scraping methods
 - [x] Setup server to execute functions from [`drf_tools.py`](drf_tools.py)
 - [x] Quantify Emoticon's from Prophet DF
@@ -270,7 +269,7 @@ class ForecastProphet(models.Model):
     # This is for creating SQLite DB
 
     ticker = models.CharField(max_length=10)
-    time = models.CharField(max_length=15)
+    time = models.CharField(max_length=16)
     encoded_string = models.TextField() 
 
     # more attributes here
