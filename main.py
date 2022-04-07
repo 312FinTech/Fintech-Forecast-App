@@ -66,6 +66,8 @@ class save_ticker_image:
             try:
                 if dictionary['ticker'] == self.ticker:
                     encoded_plot = dictionary['encoded_string']
+                    emoticons = dictionary['emoticons']
+
             except: return print("Ticker Not Found in Forecast Database")
         # Decode string and save as a .png
         try:
@@ -73,6 +75,7 @@ class save_ticker_image:
             decodeit.write(base64.b64decode(encoded_plot[2:].encode()))
             decodeit.close()
             print("Image Saved Successfully")
+            print(f'\n\t{emoticons}')
         except: return print("Could Not Save Plot Ticker Not Found")
 
 class LoginScreen(GridLayout):
@@ -136,7 +139,7 @@ class LoginScreen(GridLayout):
         forecast_decoded_img_path = Path('images/forecast_temp/decoded.png')
 
         # save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text, time=self.time.text).select_ticker()
-        save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text).select_ticker()
+        save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text.upper()).select_ticker()
         # time.sleep(1)
         
         pimg = Image(source='images/forecast_temp/decoded.png')

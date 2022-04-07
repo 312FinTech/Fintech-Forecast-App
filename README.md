@@ -260,6 +260,8 @@ Create a class to store the data in `myapi/models.py`:
 nano myapi/models.py
 ```
 ```
+from django.db import models
+
 # Create your models here.
 class ForecastProphet(models.Model):
     # Will want ticker, date, and chart attribute aka column
@@ -271,7 +273,8 @@ class ForecastProphet(models.Model):
     ticker = models.CharField(max_length=10)
     time = models.CharField(max_length=16)
     encoded_string = models.TextField() 
-
+    emoticons = models.TextField()
+    
     # more attributes here
 
     def __str__(self):
@@ -321,7 +324,7 @@ from .models import ForecastProphet
 class ForecastProphetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ForecastProphet
-        fields = ('id', 'ticker', 'time', 'encoded_string')
+        fields = ('id', 'ticker', 'time', 'encoded_string', 'emoticons')
 ```
 - Query the database for all `Forecast prophets` entries
 - Pass that database queryset into the serializer we just created, so that it gets converted into JSON and rendered
