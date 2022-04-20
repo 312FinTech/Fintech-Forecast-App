@@ -274,7 +274,8 @@ class ForecastProphet(models.Model):
     time = models.CharField(max_length=16)
     encoded_string = models.TextField() 
     emoticons = models.TextField()
-    
+    sentiment = models.TextField()
+
     # more attributes here
 
     def __str__(self):
@@ -324,7 +325,7 @@ from .models import ForecastProphet
 class ForecastProphetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ForecastProphet
-        fields = ('id', 'ticker', 'time', 'encoded_string', 'emoticons')
+        fields = ('id', 'ticker', 'time', 'encoded_string', 'emoticons', 'sentiment')
 ```
 - Query the database for all `Forecast prophets` entries
 - Pass that database queryset into the serializer we just created, so that it gets converted into JSON and rendered
@@ -396,26 +397,39 @@ http://YOUR_IP_ADDRESS:PORT_NUMBER_FROM_ABOVE/ds/1
 
 ## [Creating Package for Android](https://kivy.org/doc/stable/guide/packaging-android.html)
 
-Edit this line in the `buildozer.spec` file.
+Install [buildozer](https://buildozer.readthedocs.io/en/latest/installation.html#targeting-android)\
+*Best to use Linux and not VM
+
+Create a new dir for the app and only include the following files:
+```
+buildozer.spec  buildozer.spec.backup  buildozer.spec.save  data  images  main.py  myicon.png
+```
+Compile the app:
+```
+buildozer -v android debug
+```
+
+~~Edit this line in the `buildozer.spec` file.~~
 ```
 p4a.branch = develop
 ```
-Use the Adroid Device Bridge if needed (i.e. WSL):
-(USB Debugging must be enabled in devoloper options by tapping the build number 5 times in the settings menu)
+~~Use the Adroid Device Bridge if needed (i.e. WSL):~~
+
+~~(USB Debugging must be enabled in devoloper options by tapping the build number 5 times in the settings menu)~~
 ```
 /mnt/c/Users/mchar/Downloads/platform-tools_r33.0.0-windows/platform-tools/adb.exe devices
 ````
-* can add adb to environmatal variables (use `sudo apt install adb` for linux)
-Compile the app using:
-(this takes a long time!)
+* ~~can add adb to environmatal variables (use `sudo apt install adb` for linux)~~
+~~Compile the app using:~~
+~~(this takes a long time!)~~
 ```
 buildozer -v android deploy run
 ```
-or
+~~or~~
 ```
 buildozer android debug deploy run
 ```
-If it compiles successfully and doesn't upload to your device start a local host server by:
+~~If it compiles successfully and doesn't upload to your device start a local host server by:~~
 ```
 buildozer serve
 ```

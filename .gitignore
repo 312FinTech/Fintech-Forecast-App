@@ -155,6 +155,7 @@ untitled.ipynb
 .buildozer
 bin
 Untitled.ipynb
+blah.py
 
 # sqlLite DB
 */db.sqlite3
