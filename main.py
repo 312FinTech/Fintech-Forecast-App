@@ -5,7 +5,6 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import ScreenManager, Screen
-
 # from kivy.uix.widget import Widget
 # from kivy.properties import ObjectProperty
 
@@ -20,7 +19,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import requests
 from dotenv import load_dotenv
 import os
-import base64
+# import base64
+import pybase64 as base64
 # from pathlib import Path
 from pathlib2 import Path
 
@@ -50,7 +50,7 @@ from pathlib2 import Path
 #             decodeit.close()
 #             print("Image Saved Successfully")
 #         except: return print("Could Not Save Plot Ticker Not Found")
-
+#################################################################################################
 class save_ticker_image:
     def __init__(self, url, img_path, ticker):
         self.url = url
@@ -100,7 +100,7 @@ class save_ticker_image:
             # print(f'\n\tEMOTICON VALUE: {type(emoticons)}, \n{emoticons[0]}\n\n{emoticons[1]}\n\nSENTIMENT_SCORE{sentiment}')
             # return f'\n\tEMOTICON VALUE: {emoticons}, SENTIMENT_SCORE{sentiment}'
         except: return print("Could Not Save Plot Ticker Not Found")
-
+#################################################################################################
 class LoginScreen(GridLayout):
 # class LoginScreen(Screen):
 
@@ -147,6 +147,7 @@ class LoginScreen(GridLayout):
         self.submit.bind(on_press=self.press_forecast_button)
         self.add_widget(self.submit)
 
+#################################################################################################
     def press_forecast_button(self, instance):
         """
         When Forecast button is pressed, YahooProphet is called and returns forecast to terminal.
@@ -161,17 +162,12 @@ class LoginScreen(GridLayout):
         forecast_decoded_img_path = Path('images/forecast_temp/decoded.png')
 
         # save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text, time=self.time.text).select_ticker()
-        popup_value = save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text.upper()).select_ticker()
+        save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text.upper()).select_ticker()
         # time.sleep(1)
-
         
-        # popup = Popup(title='Test popup',
-        # content=Label(text=popup_value),
-        # size_hint=(None, None), size=(400, 400))
-
         pimg = Image(source='images/forecast_temp/decoded.png')
         self.add_widget(pimg)
-
+#################################################################################################
         ##ORIGINAL##
         # print("Pressed Forecast Button")
         # yfp_obj = yfp.YahooProphet(self.ticker.text, self.start_date.text, int(self.days_to_forecast.text))
@@ -198,15 +194,15 @@ class LoginScreen(GridLayout):
         # pimg = Image(source='images/forecast_temp/decoded.png')
         # self.add_widget(pimg)
 
+##################################################################################################
+# class ForecastWindow(Screen):
+#     # def __init__(self, **kwargs):
+#     #     super(LoginScreen, self).__init__(**kwargs)
 
-class ForecastWindow(Screen):
-    # def __init__(self, **kwargs):
-    #     super(LoginScreen, self).__init__(**kwargs)
-
-    #     wimg = Image(source='images/312fintech_ver04.png')
-    #     self.add_widget(wimg)
-    pass
-
+#     #     wimg = Image(source='images/312fintech_ver04.png')
+#     #     self.add_widget(wimg)
+#     pass
+##################################################################################################
 
 class MyApp(App):
 

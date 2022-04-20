@@ -452,27 +452,23 @@ BASH_ENV=~/.bashrc_conda
 
 ## [Creating Package for Android](https://kivy.org/doc/stable/guide/packaging-android.html)
 
-Dcoker Install and Use:
+Install Docker and do:
 ```
-sudo docker pull kivy/buildozer
-
 git clone https://github.com/kivy/buildozer.git
 sudo docker build --tag=buildozer .
-sudo docker run --volume "$(pwd)":/home/user/hostcwd buildozer --version
 
-
-sudo docker run --volume "$(pwd)":/home/user/hostcwd buildozer -v android debug
-
+conda activate forecastappenv
+cd ~/python_proj/deploy_app/ && sudo docker run --volume "$(pwd)":/home/user/hostcwd yes | buildozer -v android debug
 ```
 
 Install [buildozer](https://buildozer.readthedocs.io/en/latest/installation.html#targeting-android)\
-*Best to use Linux and not VM
+~~*Best to use Linux and not VM~~
 
-Create a new dir for the app and only include the following files:
+~~Create a new dir for the app and only include the following files:~~
 ```
 buildozer.spec  buildozer.spec.backup  buildozer.spec.save  data  images  main.py  myicon.png
 ```
-Compile the app:
+~~Compile the app:~~
 ```
 buildozer -v android debug
 ```
