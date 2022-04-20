@@ -86,7 +86,7 @@ class save_ticker_image:
             decodeit.close()
             print("Image Saved Successfully")
 
-            print(f'\n\tSENTIMENT_SCORE{sentiment}\n{self.ticker} WEATHER FORECAST')
+            print(f'\n\tSENTIMENT_SCORE: {sentiment}\n{self.ticker} WEATHER FORECAST')
             for day in range(len(emoticons[1])):
                 if emoticons[1][day] == '0':
                     print(f'🌪Thunderstorms on {emoticons[0][day]}')

@@ -52,6 +52,9 @@ yes | pip install django-widget-tweaks
 conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
 yes | pip install neuralprophet[live]
+yes | pip install pathlib2
+yes | pip install pybase64
+yes | pip install buildozer
 ```
 If you get and error for the `install gcc` use these commands then:
 ```
@@ -69,6 +72,9 @@ yes | pip install django-widget-tweaks
 conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
 yes | pip install neuralprophet[live]
+yes | pip install pathlib2
+yes | pip install pybase64
+yes | pip install buildozer
 ```
 ### Kivy Install
 ```
@@ -78,6 +84,9 @@ conda activate forecastappenv
 conda install -c anaconda ipykernel -y
 ipython kernel install --user --name=forecastappenv
 conda install kivy -c conda-forge -y
+yes | pip install pathlib2
+yes | pip install pybase64
+yes | pip install buildozer
 ```
 Run `main.py` in repo dir:
 ```
@@ -118,6 +127,9 @@ yes | pip install django-widget-tweaks
 conda install -c conda-forge python-dotenv -y
 conda install -c conda-forge jupyterlab -y
 yes | pip install neuralprophet[live]
+yes | pip install pathlib2
+yes | pip install pybase64
+yes | pip install buildozer
 ```
 ```
 mamba activate base
@@ -134,6 +146,9 @@ yes | pip install django-widget-tweaks
 mamba install -c conda-forge python-dotenv -y
 mamba install -c conda-forge jupyterlab -y
 yes | pip install neuralprophet[live]
+yes | pip install pathlib2
+yes | pip install pybase64
+yes | pip install buildozer
 ```
 
 ### Update Server [(see `update.ipynb`)](update.ipynb)
@@ -147,10 +162,10 @@ yes | pip install neuralprophet[live]
     - how far we should forecast in advance
     - how many days we want the user to see (have it set to 10 right now)
 - [ ] Make class/method that accepts regex pattern of `ENVIRONMENTAL VARIABLE` names and uses different keys if API functions throw error.
-    - [ ] Update alias email `.csv` with additional keys
+    - [x] Update alias email `.csv` with additional keys
     - [ ] Update Alpha Vantage data scraping methods
-    - [ ] Make Sentiment Analysis Class
-- [ ] Setup `cron` tab scheduler for when yfinance is updated after market close
+    - [x] Make Sentiment Analysis Class
+- [x] Setup `cron` tab scheduler for when yfinance is updated after market close
 - [ ] [PySpark if larger Dataset?](https://www.analyticsvidhya.com/blog/2022/01/apache-spark-and-facebook-prophet/)
 ### About
 Ipython Notebook file accepts four postional arguements and is inteded to be launched from the shell via a Linux cron tab at regular time intervals. See ***Arguements*** for details. * Django server endpoint url is to be included in the [`.env`](.env) file
@@ -175,9 +190,9 @@ ipython update.ipynb 104 90 'data/S&P500 tickers.csv' images/forecast_temp/forec
 - [ ] Update Alpha Vantage data scraping methods
 - [x] Setup server to execute functions from [`drf_tools.py`](drf_tools.py)
 - [x] Quantify Emoticon's from Prophet DF
-    - [ ] Dig deeper beyond `pct_change()`
-- [ ] Make Sentiment Analysis Class
-    - [ ] Plug in col to SQL DB 
+    - [x] Dig deeper beyond `pct_change()`
+- [x] Make Sentiment Analysis Class
+    - [x] Plug in col to SQL DB 
 - [ ] [Find more efficient way to use DRF](https://github.com/encode/django-rest-framework)
     - [ ] More endpoints rather than Django Servers
     - [ ] Update the DQL DB with new data, rather than clearing entire DB and repopulating it
@@ -395,6 +410,18 @@ http://YOUR_IP_ADDRESS:PORT_NUMBER_FROM_ABOVE/ds/1
 
 ---
 
+## [Setup Cron Tab](https://phoenixnap.com/kb/set-up-cron-job-linux)
+[See here for arguements to use.](https://crontab.guru/#2_15_*_*_1-5)
+```
+crontab -e
+```
+Append this line at the bottom:
+```
+2 15 * * 1-5 1-5 ~/python_proj/Fintech-Forecast-App/yf_update_script.sh >/dev/null 2>&1
+```
+
+---
+
 ## [Creating Package for Android](https://kivy.org/doc/stable/guide/packaging-android.html)
 
 Install [buildozer](https://buildozer.readthedocs.io/en/latest/installation.html#targeting-android)\
@@ -455,7 +482,7 @@ conda install -c conda-forge pyinstaller -y
         - [ ] AutoKeras (for classification purposes only)
         - [ ] Investigate additional libraries (TF, PyTorch, others?)
     - [ ] Save pickle file for model and use for forecast, as to not retrain the model on each api call
-    - [ ] Optimize runtime performance
+    - [x] Optimize runtime performance
 - [ ] Create documents showcasing metrics of the app
     - [ ] Metrics showing how often the forecast was correct on new data (NOT backtesting) both in terms of the second derivative (increase or decrease) and the distance from the actual change in price
 - [ ] Rebuild Front end for each platform (i.e. Android studio [might be able to get to work for iOS too])
