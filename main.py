@@ -56,21 +56,26 @@ class save_ticker_image:
             
             # Decode string and save as a .png
             try:
-                decodeit = open(self.img_path, 'wb')
+                decodeit = open("image.png", 'wb')
                 decodeit.write(base64.b64decode(encoded_plot[2:].encode()))
                 decodeit.close()
                 print("Image Saved Successfully")
-
-                print(f'\n\tSENTIMENT_SCORE: {sentiment}\n{self.ticker} WEATHER FORECAST')
+                sentiment = round(float(sentiment), 3)
+                print(f'\n\t  __________________________\n\t  ||{ticker} WEATHER FORECAST ||\n\t  ||SENTIMENT_SCORE: {sentiment}||\n\t  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
+                print('\t ____________________________')
                 for day in range(len(emoticons[1])):
                     if emoticons[1][day] == '0':
-                        print(f'🌪Thunderstorms on {emoticons[0][day]}')
+                        print(f'\t|🌪 Thunderstorms |{emoticons[0][day]}|')
+                        print('\t ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
                     elif emoticons[1][day] == '1':
-                        print(f'🌨Rainy on {emoticons[0][day]}')
+                        print(f'\t|🌨 Rainy         |{emoticons[0][day]}|')
+                        print('\t ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
                     elif emoticons[1][day] == '1':
-                        print(f'🌞Sunny on {emoticons[0][day]}')
+                        print(f'\t|🌞 Sunny        |{emoticons[0][day]}|')
+                        print('\t ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
                     else:
-                        print(f'🌈 on {emoticons[0][day]}')
+                        print(f'\t|🌈 on           |{emoticons[0][day]}|')
+                        print('\t ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
 
                 # print(f'\n\tEMOTICON VALUE: {type(emoticons)}, \n{emoticons[0]}\n\n{emoticons[1]}\n\nSENTIMENT_SCORE{sentiment}')
                 # return f'\n\tEMOTICON VALUE: {emoticons}, SENTIMENT_SCORE{sentiment}'
