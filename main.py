@@ -60,7 +60,7 @@ class save_ticker_image:
                 decodeit.write(base64.b64decode(encoded_plot[2:].encode()))
                 decodeit.close()
                 print("Image Saved Successfully")
-                sentiment = round(float(sentiment), 3)
+                if sentiment != "NULL": sentiment = round(float(sentiment), 3)
                 print(f'\n\t  __________________________\n\t  ||{ticker} WEATHER FORECAST ||\n\t  ||SENTIMENT_SCORE: {sentiment}||\n\t  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
                 print('\t ____________________________')
                 for day in range(len(emoticons[1])):
@@ -81,7 +81,7 @@ class save_ticker_image:
                 # return f'\n\tEMOTICON VALUE: {emoticons}, SENTIMENT_SCORE{sentiment}'
             except: return print("Could Not Save Plot Ticker Not Found")
         
-        req = UrlRequest(self.url, select_ticker)
+        req = UrlRequest(self.url, select_ticker).wait()
 
 ###############################################################################################
 class LoginScreen(GridLayout):
@@ -147,7 +147,7 @@ class LoginScreen(GridLayout):
 
         # save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text, time=self.time.text).select_ticker()
         save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text.upper())#.select_ticker()
-        # time.sleep(0.3)
+        time.sleep(0.3)
         
         pimg = Image(source='images/forecast_temp/decoded.png')
         self.add_widget(pimg)

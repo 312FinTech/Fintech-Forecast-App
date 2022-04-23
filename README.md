@@ -442,7 +442,7 @@ BASH_ENV=~/.bashrc_conda
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-2 15 * * 1-5 1-5 conda activate forecastappenv; cd ~/python_proj/Fintech-Forecast-App; ipython update.ipynb 10 90 'data/S&P500 tickers.csv' images/forecast_temp/forecast.png; conda deactivate
+2 15 * * 1-5 conda activate forecastappenv; cd ~/python_proj/Fintech-Forecast-App; ipython update.ipynb 52 90 'data/S&P500 tickers.csv' images/forecast_temp/forecast.png; conda deactivate >/dev/null 2>&1
 @reboot conda activate forecastappenv; python& ~/python_proj/Fintech-Forecast-App/mysite/manage.py runserver 0.0.0.0:3555 >/dev/null 2>&1
 @reboot conda activate forecastappenv; jupyter-lab& --ip 0.0.0.0 --port 8888 >/dev/null 2>&1 
 ```
