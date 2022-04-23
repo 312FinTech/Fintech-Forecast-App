@@ -175,6 +175,8 @@ The positional arguements are to be in this order (see markdown cell for ex. usa
 2. *forecast_days_ahead* **int**:  number of days to forecast from latest date
 3. *ticker_path* **str**: path and file name to pull tickers from (must be yfinance format) 
 4. *forecast_img_path* **str**: path and file name to save plot images to be byte string encoded
+5. *include_sentiment* **str**: T or F, to specify if sentiment analysis will be calculated or not
+6. *model_to_use* **str**: *FBP* for Facebook Prophet, *NP* for Neural Prophet
 ```
 conda activate forecastappenv
 cd ~/python_proj/Fintech-Forecast-App/
@@ -442,7 +444,7 @@ BASH_ENV=~/.bashrc_conda
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-2 15 * * 1-5 conda activate forecastappenv; cd ~/python_proj/Fintech-Forecast-App; ipython update.ipynb 52 90 'data/S&P500 tickers.csv' images/forecast_temp/forecast.png; conda deactivate >/dev/null 2>&1
+2 15 * * 1-5 conda activate forecastappenv; cd ~/python_proj/Fintech-Forecast-App; ipython update.ipynb 52 90 'data/S&P500 tickers.csv' images/forecast_temp/forecast.png T FBP; conda deactivate >/dev/null 2>&1
 @reboot conda activate forecastappenv; python& ~/python_proj/Fintech-Forecast-App/mysite/manage.py runserver 0.0.0.0:3555 >/dev/null 2>&1
 @reboot conda activate forecastappenv; jupyter-lab& --ip 0.0.0.0 --port 8888 >/dev/null 2>&1 
 ```
