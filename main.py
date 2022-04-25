@@ -147,7 +147,6 @@ class LoginScreen(GridLayout):
 
         # save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text, time=self.time.text).select_ticker()
         save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text.upper())#.select_ticker()
-        time.sleep(0.3)
         
         pimg = Image(source='images/forecast_temp/decoded.png')
         self.add_widget(pimg)
