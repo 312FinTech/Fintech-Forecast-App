@@ -38,7 +38,7 @@ version = 0.1
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
 #requirements = python3,kivy,requests,python-dotenv,pathlib2,pillow
-requirements = python3,kivy,requests,python-dotenv,pathlib2,pybase64
+requirements = python3,kivy,requests,python-dotenv,pathlib2,pybase64,pillow
 #requirements = python3,kivy
 
 # (str) Custom source folders for requirements

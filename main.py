@@ -10,13 +10,53 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.network.urlrequest import UrlRequest
 # https://kivy.org/doc/stable/api-kivy.network.urlrequest.html
 
-# import time
+# import warnings
+# warnings.filterwarnings("ignore")
+
+# from ezekial import yahooprophet as yfp
+# from matplotlib import pyplot as plt
+
+import time
 ############################################################
+# import requests
 # from dotenv import load_dotenv
 import os
+# import base64
 import pybase64 as base64
+# from pathlib import Path
 from pathlib2 import Path
+from PIL import Image as PILImage
+from PIL import ImageFont, ImageDraw
+# from PIL import ImageFont
+# from PIL import ImageDraw 
 ############################################################
+
+# class save_ticker_image:
+#     def __init__(self, url, img_path, ticker, time):
+#         self.url = url
+#         self.img_path = img_path
+#         self.ticker = ticker
+#         self.time = time
+    
+#     def django_get(self):
+#         response = requests.get(self.url)
+#         response_json = response.json()
+#         return response_json
+
+#     def select_ticker(self):
+#         django_api_dict = self.django_get()
+#         for dictionary in django_api_dict:   
+#             try:
+#                 if dictionary['ticker'] == self.ticker and dictionary['time'] == self.time:
+#                     encoded_plot = dictionary['encoded_string']
+#             except: return print("Ticker Not Found in Forecast Database")
+#         # Decode string and save as a .png
+#         try:
+#             decodeit = open(self.img_path, 'wb')
+#             decodeit.write(base64.b64decode(encoded_plot[2:].encode()))
+#             decodeit.close()
+#             print("Image Saved Successfully")
+#         except: return print("Could Not Save Plot Ticker Not Found")
 
 ###############################################################################################
 class save_ticker_image:
@@ -33,11 +73,15 @@ class save_ticker_image:
         # response_json = response.json()
         # return response_json
 
+        # def get_image_paths(path1, path2):
+        #     return [path1, path2]
+
         def select_ticker(req, result):
+        # def chart_generation(self, req, result):
             try:
                 django_api_dict = result
-                # django_api_dict = self.django_get() #DEPRECATED
-                # except: print("URL GET FAIL") #DEPRECATED
+                # django_api_dict = self.django_get() 
+                # except: print("URL GET FAIL")
                 for dictionary in django_api_dict:   
                     try:
                         if dictionary['ticker'] == self.ticker:
@@ -46,41 +90,81 @@ class save_ticker_image:
 
                             emoticons = emoticons.replace("'",'').replace(' 00:00:00', '').replace('[[', '').split('],')
                             emoticons = [emoticons[0].split(', '), emoticons[1].replace(' [', '').replace(']]', '').split(', ')]
-
+                            # self.emoticons = emoticons
                             sentiment = dictionary['sentiment']
-
+                            # self.sentiment = sentiment
+                            
                     except: print("Ticker Not Found in Forecast Database")
                         # pass
             except: print("Kivy Request Fails")
                 # pass
-            
+
             # Decode string and save as a .png
             try:
-                decodeit = open("image.png", 'wb')
+                decodeit = open(self.img_path, 'wb')
                 decodeit.write(base64.b64decode(encoded_plot[2:].encode()))
                 decodeit.close()
                 print("Image Saved Successfully")
-                if sentiment != "NULL": sentiment = round(float(sentiment), 3)
-                print(f'\n\t  __________________________\n\t  ||{ticker} WEATHER FORECAST ||\n\t  ||SENTIMENT_SCORE: {sentiment}||\n\t  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
-                print('\t ____________________________')
+                # forecast_image = Image(source='images/forecast_temp/decoded.png')
+                forecast_image = 'images/forecast_temp/decoded.png'
+                self.forecast_image = forecast_image
+
+            except: 
+                print('Error saving plot')
+                # forecast_image = Image(source='images/forecast_temp/image_render_error.png')
+                forecast_image = 'images/forecast_temp/image_render_error.png'
+                self.forecast_image = forecast_image
+
+            # def emoticon_generation(self):
+            try:
+                # if sentiment != "NULL": sentiment = round(float(sentiment), 3)
+                # print(f'\n\tSENTIMENT_SCORE: {sentiment}\n{self.ticker} WEATHER FORECAST')
+                # for day in range(len(emoticons[1])):
+                #     if emoticons[1][day] == '0':
+                #         print(f'🌪Thunderstorms on {emoticons[0][day]}')
+                #     elif emoticons[1][day] == '1':
+                #         print(f'🌨Rainy on {emoticons[0][day]}')
+                #     elif emoticons[1][day] == '1':
+                #         print(f'🌞Sunny on {emoticons[0][day]}')
+                #     else:
+                #         print(f'🌈 on {emoticons[0][day]}')
+                        
+                emoticon_output_string = f'\n  __________________________\n  ||{ticker} WEATHER FORECAST ||\n  ||Sentiment Score:        {sentiment}||\n  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯'
+                emoticon_output_string += '\n ____________________________'
                 for day in range(len(emoticons[1])):
                     if emoticons[1][day] == '0':
-                        print(f'\t|🌪 Thunderstorms |{emoticons[0][day]}|')
-                        print('\t ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
+                        emoticon_output_string += f'\n|\U0001f32a Stormy               |  {emoticons[0][day]}|'
+                        emoticon_output_string += '\n ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯'
                     elif emoticons[1][day] == '1':
-                        print(f'\t|🌨 Rainy         |{emoticons[0][day]}|')
-                        print('\t ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
+                        emoticon_output_string += f'\n|\U0001f326 Rainy                 |  {emoticons[0][day]}|'
+                        emoticon_output_string += '\n ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯'
                     elif emoticons[1][day] == '1':
-                        print(f'\t|🌞 Sunny        |{emoticons[0][day]}|')
-                        print('\t ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
+                        emoticon_output_string += f'\n|\U0001f324 Overcast            |  {emoticons[0][day]}|'
+                        emoticon_output_string += '\n ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯'
                     else:
-                        print(f'\t|🌈 on           |{emoticons[0][day]}|')
-                        print('\t ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯')
+                        emoticon_output_string += f'\n|\U0001f31e Sunny                 |  {emoticons[0][day]}|'
+                        emoticon_output_string += '\n ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯'
 
-                # print(f'\n\tEMOTICON VALUE: {type(emoticons)}, \n{emoticons[0]}\n\n{emoticons[1]}\n\nSENTIMENT_SCORE{sentiment}')
-                # return f'\n\tEMOTICON VALUE: {emoticons}, SENTIMENT_SCORE{sentiment}'
-            except: return print("Could Not Save Plot Ticker Not Found")
-        
+                img = PILImage.new('RGB', (235, 500))
+
+                draw = ImageDraw.Draw(img)
+                font = ImageFont.truetype("images/forecast_temp/Symbola.ttf", 16)
+                draw.text((0, 0),emoticon_output_string,font=font)
+                img.save('images/forecast_temp/final_emoticon_report.png')
+                # emos = Image(source='images/forecast_temp/final_emoticon_report.png')
+                emos = 'images/forecast_temp/final_emoticon_report.png'
+                self.emos = emos
+                    # print(f'\n\tEMOTICON VALUE: {type(emoticons)}, \n{emoticons[0]}\n\n{emoticons[1]}\n\nSENTIMENT_SCORE{sentiment}')
+                    # return f'\n\tEMOTICON VALUE: {emoticons}, SENTIMENT_SCORE{sentiment}'
+            except: 
+                print("Could Not Save Emoticon Report Ticker Not Found")
+                # emos = Image(source='images/forecast_temp/emoticon_render_error.png')
+                emos = 'images/forecast_temp/emoticon_render_error.png'
+                self.emos = emos
+
+            # get_image_paths(forecast_image, emos)
+            # return [forecast_image, emos]
+                             
         req = UrlRequest(self.url, select_ticker).wait()
 
 ###############################################################################################
@@ -139,17 +223,50 @@ class LoginScreen(GridLayout):
         ############################################################################
         ###                         DJANGO API CALL                              ###
         ############################################################################
-        # USES .ENV FILE #DEPRECATED for testing purposes only
-        # load_dotenv() #DEPRECATED for testing purposes only
-        # url = os.getenv("DJANGO_SERVER_URL") #DEPRECATED for testing purposes only
-        url = 'http://SERVER_IP/ticker/'
+        # USES .ENV FILE 
+        # load_dotenv()
+        # url = os.getenv("DJANGO_SERVER_URL")
+        url = 'http://45.19.28.81:3555/ticker/'
         forecast_decoded_img_path = Path('images/forecast_temp/decoded.png')
 
         # save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text, time=self.time.text).select_ticker()
-        save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text.upper())#.select_ticker()
+        pimg = save_ticker_image(url=url, img_path=forecast_decoded_img_path, ticker=self.ticker.text.upper())#.select_ticker()
+        # time.sleep(.45)
         
-        pimg = Image(source='images/forecast_temp/decoded.png')
-        self.add_widget(pimg)
+        # print(pimg)
+        # print(pimg.forecast_image, pimg.emos)
+
+        # pimg = Image(source='images/forecast_temp/decoded.png')
+        # self.add_widget(pimg)
+        self.add_widget(Image(source=pimg.forecast_image))
+        self.add_widget(Image(source=pimg.emos))
+
+################################################################################################
+        ##ORIGINAL##
+        # print("Pressed Forecast Button")
+        # yfp_obj = yfp.YahooProphet(self.ticker.text, self.start_date.text, int(self.days_to_forecast.text))
+        # # print(yfp_obj.forecast_df().tail(int(self.days_to_forecast.text)))
+        # pimg = yfp_obj.plot()
+        # pimg.savefig('images/forecast.png')
+
+        # # time.sleep(3)
+        # pimg = Image(source='images/forecast.png')
+        # self.add_widget(pimg)
+
+        # ######################################
+        # ## CHECKING EZEKIAL DECODING METHOD ##
+        # ###  TO BE REPLAECD WITH API CALL  ###
+        # ######################################
+        # print("Pressed Forecast Button")
+
+        # yfp_obj = yfp.YahooProphet(self.ticker.text, self.start_date.text, int(self.days_to_forecast.text))
+        # ####################################################################
+        # yfp_obj.encode_plot()
+        # yfp_obj.decode_plot()
+        # ## Load decoded image
+        # # forecast_decoded_img_path = Path('images/forecast_temp/decoded.png')
+        # pimg = Image(source='images/forecast_temp/decoded.png')
+        # self.add_widget(pimg)
 
 ##################################################################################################
 # class ForecastWindow(Screen):
