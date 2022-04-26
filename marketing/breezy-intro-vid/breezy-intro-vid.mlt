@@ -1,0 +1,675 @@
+<?xml version="1.0" standalone="no"?>
+<mlt LC_NUMERIC="C" version="7.1.0" title="Shotcut version 21.10.31" producer="main_bin">
+  <profile description="automatic" width="1920" height="1080" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="16" display_aspect_den="9" frame_rate_num="60" frame_rate_den="1" colorspace="709"/>
+  <chain id="chain0" out="00:01:43.200">
+    <property name="length">00:01:43.217</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/mchar/Videos/2022-04-26 17-27-04.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">c1e6067aeeacdfb3b3148dad94c147fb</property>
+    <property name="ignore_points">1</property>
+    <property name="shotcut:caption">2022-04-26 17-27-04.mkv</property>
+  </chain>
+  <chain id="chain1" out="00:01:13.233">
+    <property name="length">00:01:13.250</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/mchar/Videos/2022-04-26 17-29-03.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">bf9729213f3f428084985fdb93698f35</property>
+    <property name="ignore_points">1</property>
+    <property name="shotcut:caption">2022-04-26 17-29-03.mkv</property>
+  </chain>
+  <chain id="chain2" out="00:00:16.717">
+    <property name="length">00:00:16.733</property>
+    <property name="eof">pause</property>
+    <property name="resource">2022-04-26 17-41-03.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="shotcut:hash">07bf2b93c268191e4419986d4c30616b</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">2022-04-26 17-41-03.mkv</property>
+    <property name="xml">was here</property>
+  </chain>
+  <producer id="producer0" in="00:00:00.000" out="03:59:59.983">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">F:/Git/Fintech-Forecast-App/images/forecast_temp/final_emoticon_report.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="mlt_service">qimage</property>
+    <property name="creation_time">2022-04-26T08:07:26</property>
+    <property name="shotcut:caption">final_emoticon_report.png</property>
+    <property name="shotcut:hash">565793a309742be0551674e18f4122b9</property>
+    <property name="ignore_points">0</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer1" in="00:00:00.000" out="03:59:59.983">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">F:/Git/Fintech-Forecast-App/images/forecast_temp/decoded.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="mlt_service">qimage</property>
+    <property name="creation_time">2022-04-26T08:07:26</property>
+    <property name="shotcut:caption">decoded.png</property>
+    <property name="shotcut:hash">42a663ec2655c06bdce1e91d8e20687e</property>
+    <property name="ignore_points">0</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer2" in="00:00:00.000" out="03:59:59.983">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">F:/Git/Fintech-Forecast-App/images/312fintech_ver04.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="mlt_service">qimage</property>
+    <property name="creation_time">2022-03-27T22:26:36</property>
+    <property name="shotcut:caption">312fintech_ver04.png</property>
+    <property name="shotcut:hash">6e247fa8d558fcec99212aeb8a43b8a2</property>
+    <property name="ignore_points">0</property>
+    <property name="xml">was here</property>
+  </producer>
+  <playlist id="main_bin" title="Shotcut version 21.10.31">
+    <property name="shotcut:projectAudioChannels">2</property>
+    <property name="shotcut:projectFolder">1</property>
+    <property name="xml_retain">1</property>
+    <entry producer="chain0" in="00:00:00.000" out="00:01:43.200"/>
+    <entry producer="chain1" in="00:00:00.000" out="00:01:13.233"/>
+    <entry producer="chain2" in="00:00:00.000" out="00:00:16.550"/>
+    <entry producer="producer0" in="00:00:00.000" out="00:00:03.983"/>
+    <entry producer="producer1" in="00:00:00.000" out="00:00:03.983"/>
+    <entry producer="producer2" in="00:00:00.000" out="00:00:03.983"/>
+  </playlist>
+  <producer id="black" in="00:00:00.000" out="00:01:04.800">
+    <property name="length">00:01:04.817</property>
+    <property name="eof">pause</property>
+    <property name="resource">0</property>
+    <property name="aspect_ratio">1</property>
+    <property name="mlt_service">color</property>
+    <property name="mlt_image_format">rgba</property>
+    <property name="set.test_audio">0</property>
+  </producer>
+  <playlist id="background">
+    <entry producer="black" in="00:00:00.000" out="00:01:04.800"/>
+  </playlist>
+  <chain id="chain3" out="00:01:09.083">
+    <property name="length">00:01:09.100</property>
+    <property name="eof">pause</property>
+    <property name="resource">video_audio_script_henry-1.mp3</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="mute_on_pause">0</property>
+    <property name="shotcut:hash">8533a45b178adadf9a44c4b50c40b374</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">video_audio_script_henry-1.mp3</property>
+    <property name="xml">was here</property>
+  </chain>
+  <playlist id="playlist0">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V1</property>
+    <entry producer="chain3" in="00:00:04.283" out="00:01:09.083"/>
+  </playlist>
+  <chain id="chain4" out="00:01:13.233">
+    <property name="length">00:01:13.250</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/mchar/Videos/2022-04-26 17-29-03.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">bf9729213f3f428084985fdb93698f35</property>
+    <property name="shotcut:caption">2022-04-26 17-29-03.mkv</property>
+    <filter id="filter0" out="00:00:05.400">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">00:00:05.150=1;00:00:05.400=0</property>
+      <property name="shotcut:animOut">16</property>
+    </filter>
+    <filter id="filter1" out="00:00:05.400">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:05.150=0;00:00:05.400=-60</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="shotcut:animOut">16</property>
+    </filter>
+  </chain>
+  <chain id="chain5" out="00:01:13.233">
+    <property name="length">00:01:13.250</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/mchar/Videos/2022-04-26 17-29-03.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">bf9729213f3f428084985fdb93698f35</property>
+    <property name="shotcut:caption">2022-04-26 17-29-03.mkv</property>
+    <filter id="filter2" in="00:00:22.800" out="00:00:28.817">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">00:00:00.000=0;00:00:00.333=1</property>
+      <property name="shotcut:animIn">21</property>
+    </filter>
+    <filter id="filter3" in="00:00:22.800" out="00:00:28.817">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">00:00:05.683=1;00:00:06.017=0</property>
+      <property name="shotcut:animOut">21</property>
+    </filter>
+    <filter id="filter4" in="00:00:22.800" out="00:00:28.817">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:00.000=-60;00:00:00.333=0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="shotcut:animIn">21</property>
+    </filter>
+    <filter id="filter5" in="00:00:22.800" out="00:00:28.817">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:05.683=0;00:00:06.017=-60</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="shotcut:animOut">21</property>
+    </filter>
+  </chain>
+  <chain id="chain6" out="00:00:16.717">
+    <property name="length">00:00:16.733</property>
+    <property name="eof">pause</property>
+    <property name="resource">2022-04-26 17-41-03.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="shotcut:hash">07bf2b93c268191e4419986d4c30616b</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">2022-04-26 17-41-03.mkv</property>
+    <property name="xml">was here</property>
+    <filter id="filter6" out="00:00:16.550">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">00:00:00.000=0;00:00:00.217=1</property>
+      <property name="shotcut:animIn">14</property>
+    </filter>
+    <filter id="filter7" out="00:00:16.550">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">00:00:15.833=1;00:00:16.550=0</property>
+      <property name="shotcut:animOut">44</property>
+    </filter>
+    <filter id="filter8" out="00:00:16.550">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:00.000=-60;00:00:00.217=0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="shotcut:animIn">14</property>
+    </filter>
+    <filter id="filter9" out="00:00:16.550">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:15.833=0;00:00:16.550=-60</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="shotcut:animOut">44</property>
+    </filter>
+  </chain>
+  <producer id="producer3" in="00:00:00.000" out="03:59:59.983">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">F:/Git/Fintech-Forecast-App/images/forecast_temp/final_emoticon_report.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="mlt_service">qimage</property>
+    <property name="creation_time">2022-04-26T08:07:26</property>
+    <property name="shotcut:caption">final_emoticon_report.png</property>
+    <property name="shotcut:hash">565793a309742be0551674e18f4122b9</property>
+    <property name="ignore_points">0</property>
+    <property name="xml">was here</property>
+    <filter id="filter10" out="00:00:07.583">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">00:00:00.000=0;00:00:00.567=1</property>
+      <property name="shotcut:animIn">35</property>
+    </filter>
+    <filter id="filter11" out="00:00:07.583">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">00:00:07.183=1;00:00:07.583=0</property>
+      <property name="shotcut:animOut">25</property>
+    </filter>
+    <filter id="filter12" out="00:00:07.583">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:00.000=-60;00:00:00.567=0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="shotcut:animIn">35</property>
+    </filter>
+    <filter id="filter13" out="00:00:07.583">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:07.183=0;00:00:07.583=-60</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="shotcut:animOut">25</property>
+    </filter>
+  </producer>
+  <producer id="producer4" in="00:00:00.000" out="03:59:59.983">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">F:/Git/Fintech-Forecast-App/images/forecast_temp/decoded.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="mlt_service">qimage</property>
+    <property name="creation_time">2022-04-26T08:07:26</property>
+    <property name="shotcut:caption">decoded.png</property>
+    <property name="shotcut:hash">42a663ec2655c06bdce1e91d8e20687e</property>
+    <property name="ignore_points">0</property>
+    <property name="xml">was here</property>
+    <filter id="filter14" out="00:00:03.983">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">00:00:00.000=0;00:00:00.450=1</property>
+      <property name="shotcut:animIn">28</property>
+    </filter>
+    <filter id="filter15" out="00:00:03.983">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:00.000=-60;00:00:00.450=0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="shotcut:animIn">28</property>
+    </filter>
+  </producer>
+  <chain id="chain7" out="00:01:13.233">
+    <property name="length">00:01:13.250</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/mchar/Videos/2022-04-26 17-29-03.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">bf9729213f3f428084985fdb93698f35</property>
+    <property name="shotcut:caption">2022-04-26 17-29-03.mkv</property>
+    <filter id="filter16" in="00:00:35.900" out="00:00:40.650">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">00:00:00.000=0;00:00:00.450=1</property>
+      <property name="shotcut:animIn">28</property>
+    </filter>
+    <filter id="filter17" in="00:00:35.900" out="00:00:40.650">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">00:00:04.433=1;00:00:04.750=0</property>
+      <property name="shotcut:animOut">20</property>
+    </filter>
+    <filter id="filter18" in="00:00:35.900" out="00:00:40.650">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:00.000=-60;00:00:00.450=0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="shotcut:animIn">28</property>
+    </filter>
+    <filter id="filter19" in="00:00:35.900" out="00:00:40.650">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:04.433=0;00:00:04.750=-60</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="shotcut:animOut">20</property>
+    </filter>
+  </chain>
+  <chain id="chain8" out="00:01:43.200">
+    <property name="length">00:01:43.217</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/mchar/Videos/2022-04-26 17-27-04.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">c1e6067aeeacdfb3b3148dad94c147fb</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">2022-04-26 17-27-04.mkv</property>
+    <filter id="filter20" in="00:00:17.017" out="00:00:23.600">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">00:00:06.233=1;00:00:06.583=0</property>
+      <property name="shotcut:animOut">22</property>
+    </filter>
+    <filter id="filter21" in="00:00:17.017" out="00:00:23.600">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">00:00:00.000=0;00:00:00.333=1</property>
+      <property name="shotcut:animIn">21</property>
+    </filter>
+    <filter id="filter22" in="00:00:17.017" out="00:00:23.600">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:06.233=0;00:00:06.583=-60</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="shotcut:animOut">22</property>
+    </filter>
+    <filter id="filter23" in="00:00:17.017" out="00:00:23.600">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:00.000=-60;00:00:00.333=0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="shotcut:animIn">21</property>
+    </filter>
+  </chain>
+  <chain id="chain9" out="00:01:13.233">
+    <property name="length">00:01:13.250</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/mchar/Videos/2022-04-26 17-29-03.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">bf9729213f3f428084985fdb93698f35</property>
+    <property name="shotcut:caption">2022-04-26 17-29-03.mkv</property>
+    <filter id="filter24" in="00:01:04.100" out="00:01:08.400">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">00:00:00.000=0;00:00:00.100=1</property>
+      <property name="shotcut:animIn">7</property>
+    </filter>
+    <filter id="filter25" in="00:01:04.100" out="00:01:08.400">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">00:00:03.967=1;00:00:04.300=0</property>
+      <property name="shotcut:animOut">21</property>
+    </filter>
+    <filter id="filter26" in="00:01:04.100" out="00:01:08.400">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:00.000=-60;00:00:00.100=0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="shotcut:animIn">7</property>
+    </filter>
+    <filter id="filter27" in="00:01:04.100" out="00:01:08.400">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:03.967=0;00:00:04.300=-60</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="shotcut:animOut">21</property>
+    </filter>
+  </chain>
+  <chain id="chain10" out="00:01:43.200">
+    <property name="length">00:01:43.217</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/mchar/Videos/2022-04-26 17-27-04.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">c1e6067aeeacdfb3b3148dad94c147fb</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">2022-04-26 17-27-04.mkv</property>
+    <filter id="filter28" in="00:00:05.967" out="00:00:08.200">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">00:00:00.000=0;00:00:00.233=1</property>
+      <property name="shotcut:animIn">15</property>
+    </filter>
+    <filter id="filter29" in="00:00:05.967" out="00:00:08.200">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:00.000=-60;00:00:00.233=0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="shotcut:animIn">15</property>
+    </filter>
+  </chain>
+  <chain id="chain11" out="00:01:43.200">
+    <property name="length">00:01:43.217</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/mchar/Videos/2022-04-26 17-27-04.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">c1e6067aeeacdfb3b3148dad94c147fb</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">2022-04-26 17-27-04.mkv</property>
+    <filter id="filter30" in="00:00:29.233" out="00:00:31.283">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">00:00:01.750=1;00:00:02.050=0</property>
+      <property name="shotcut:animOut">19</property>
+    </filter>
+    <filter id="filter31" in="00:00:29.233" out="00:00:31.283">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:01.750=0;00:00:02.050=-60</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="shotcut:animOut">19</property>
+    </filter>
+  </chain>
+  <chain id="chain12" out="00:01:43.200">
+    <property name="length">00:01:43.217</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/mchar/Videos/2022-04-26 17-27-04.mkv</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">c1e6067aeeacdfb3b3148dad94c147fb</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">2022-04-26 17-27-04.mkv</property>
+    <filter id="filter32" in="00:01:31.183" out="00:01:33.200">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">00:00:00.000=0;00:00:00.133=1</property>
+      <property name="shotcut:animIn">9</property>
+    </filter>
+    <filter id="filter33" in="00:01:31.183" out="00:01:33.200">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">00:00:01.817=1;00:00:02.017=0</property>
+      <property name="shotcut:animOut">13</property>
+    </filter>
+    <filter id="filter34" in="00:01:31.183" out="00:01:33.200">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:00.000=-60;00:00:00.133=0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="shotcut:animIn">9</property>
+    </filter>
+    <filter id="filter35" in="00:01:31.183" out="00:01:33.200">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:01.817=0;00:00:02.017=-60</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="shotcut:animOut">13</property>
+    </filter>
+  </chain>
+  <producer id="producer5" in="00:00:00.000" out="03:59:59.983">
+    <property name="length">04:00:00.000</property>
+    <property name="eof">pause</property>
+    <property name="resource">F:/Git/Fintech-Forecast-App/images/312fintech_ver04.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
+    <property name="seekable">1</property>
+    <property name="mlt_service">qimage</property>
+    <property name="creation_time">2022-03-27T22:26:36</property>
+    <property name="shotcut:caption">312fintech_ver04.png</property>
+    <property name="shotcut:hash">6e247fa8d558fcec99212aeb8a43b8a2</property>
+    <property name="ignore_points">0</property>
+    <property name="xml">was here</property>
+    <filter id="filter36" out="00:00:03.367">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">00:00:00.000=0;00:00:00.233=1</property>
+      <property name="shotcut:animIn">15</property>
+    </filter>
+    <filter id="filter37" out="00:00:03.367">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">00:00:02.433=1;00:00:03.367=0</property>
+      <property name="shotcut:animOut">57</property>
+    </filter>
+    <filter id="filter38" out="00:00:03.367">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:00.000=-60;00:00:00.233=0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="shotcut:animIn">15</property>
+    </filter>
+    <filter id="filter39" out="00:00:03.367">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">00:00:02.433=0;00:00:03.367=-60</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="shotcut:animOut">57</property>
+    </filter>
+  </producer>
+  <playlist id="playlist1">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V2</property>
+    <entry producer="chain4" in="00:00:00.000" out="00:00:05.400"/>
+    <entry producer="chain5" in="00:00:22.800" out="00:00:28.817"/>
+    <entry producer="chain6" in="00:00:00.000" out="00:00:16.550"/>
+    <entry producer="producer3" in="00:00:00.000" out="00:00:07.583"/>
+    <entry producer="producer4" in="00:00:00.217" out="00:00:03.983"/>
+    <entry producer="chain7" in="00:00:35.900" out="00:00:40.650"/>
+    <entry producer="chain8" in="00:00:17.017" out="00:00:23.600"/>
+    <entry producer="chain9" in="00:01:04.100" out="00:01:08.400"/>
+    <entry producer="chain10" in="00:00:05.967" out="00:00:08.200"/>
+    <entry producer="chain11" in="00:00:29.233" out="00:00:31.283"/>
+    <entry producer="chain12" in="00:01:31.183" out="00:01:33.200"/>
+    <entry producer="producer5" in="00:00:00.000" out="00:00:03.367"/>
+  </playlist>
+  <tractor id="tractor0" title="Shotcut version 21.10.31" in="00:00:00.000" out="00:01:04.800">
+    <property name="shotcut">1</property>
+    <property name="shotcut:projectAudioChannels">2</property>
+    <property name="shotcut:projectFolder">1</property>
+    <property name="shotcut:scaleFactor">0.453444</property>
+    <track producer="background"/>
+    <track producer="playlist0"/>
+    <track producer="playlist1" hide="audio"/>
+    <transition id="transition0">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition1">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="version">0.9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="threads">0</property>
+      <property name="disable">1</property>
+    </transition>
+    <transition id="transition2">
+      <property name="a_track">0</property>
+      <property name="b_track">2</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition3">
+      <property name="a_track">1</property>
+      <property name="b_track">2</property>
+      <property name="version">0.9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="threads">0</property>
+      <property name="disable">0</property>
+    </transition>
+  </tractor>
+</mlt>
