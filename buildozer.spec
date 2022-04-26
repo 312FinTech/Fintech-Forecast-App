@@ -50,7 +50,7 @@ requirements = python3,kivy,requests,python-dotenv,pathlib2,pybase64,pillow
 
 # (str) Icon of the application
 #icon.filename = %(source.dir)s/data/icon.png
-#icon.filename = %(source.dir)smyicon.png
+icon.filename = %(source.dir)s/myicon.png
 
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
