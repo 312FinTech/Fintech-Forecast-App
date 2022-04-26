@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = FintechForecast
+title = Breezy
 
 # (str) Package name
 package.name = myapp
