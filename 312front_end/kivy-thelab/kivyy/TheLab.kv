@@ -1,0 +1,41 @@
+<MyGridLayout>
+
+    ticker: ticker
+    date: date
+    forecast: forecast
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text:'Ticker Symbol'
+            TextInput:
+                id: ticker
+                multiline: False
+                background_color: (255/250, 207/250, 207/250, 1)
+
+            Label:
+                text:'Start Data From: \n(YYYY-MM-DD)'
+            TextInput:
+                id: date
+                multiline: False
+                background_color: (255/250, 207/250, 207/250, 1)
+
+            Label:
+                text:'Days to Forecast:'
+            TextInput:
+                id: forecast
+                multiline: False
+                background_color: (255/250, 207/250, 207/250, 1)
+            
+        Button:
+            text:'Submit'
+            font_size: 32
+            on_press: root.press()
+            # RGB - A
+            background_normal: ''
+            background_color: (255/250, 115/250, 115/250, .5)

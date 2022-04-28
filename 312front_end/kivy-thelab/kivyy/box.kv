@@ -1,0 +1,60 @@
+
+
+<Button>
+    font_size: 32
+    background_normal: ''
+    background_color: (109/250, 111/250, 255/250, 1)
+
+<TextInput>:
+    background_color: (231/250, 227/250, 255/250, 1)
+
+
+<MyLayout>
+    canvas.before:
+        Color:
+            rgba:(247/250, 245/250, 245/250, 1)
+        Rectangle:
+            size:self.size
+            pos: self.pos
+    BoxLayout:
+        orientation:'vertical'
+        size: root.width, root.height
+        padding: 50
+        spacing: 20
+
+        Image:
+            source: 'Images/312logo.png'
+            allow_stretch: True
+            keep_ratio: True
+            pos: self.pos
+
+        Label:
+            text: "Ticker Symbol"
+            background_color:(214/250, 43/250, 112/250, 1)
+            canvas.before:
+                Color:
+                    rgba:self.background_color
+                Rectangle:
+                    size:self.size
+                    pos: self.pos
+            size_hint: (.5,.5)
+            pos_hint: {'center_x': 0.54}
+            font_size: 32
+        TextInput:
+            text:''
+            font_size: 32
+            multiline: 'False'
+            size_hint: (.5,.5)
+            pos_hint: {'center_x': 0.54}
+        Button:
+            text: "Forecast"
+            size_hint: (.5,.5)
+            pos_hint: {'center_x': 0.54}
+
+        # Button:
+        #     text: "FinTech"
+
+        # Button:
+        #     text: "Breezy"
+        #     size_hint: (.5,.5)
+        #     pos_hint: {'center_x': 0.54}

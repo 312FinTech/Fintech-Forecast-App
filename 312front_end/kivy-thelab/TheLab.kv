@@ -1,0 +1,233 @@
+PageLayoutExample:
+    canvas.before:
+        Color:
+            rgba: (57/250, 78/250, 89/250, 1)
+        Rectangle:
+            pos: self.pos
+            size:self.size
+
+#:set s dp(150)
+
+<CanvasExample1>:
+    canvas:
+        Rectangle:
+            pos: self.center_x-s/2, self.center_y-s/2
+            size: s, s
+        Ellipse:
+            pos: 100 , 300
+            size: s, s/2
+        Line:
+            points: (0, 0, self.width/4, 100, self.width/2, 0, self.width*3/4, 100, self.width, 0)
+            width: 2 
+
+<CanvasExample2>:
+    canvas:
+        Line:
+            points: (0, self.height/2, self.width, self.height/2)
+            width: 2
+        Line:
+            points: (self.width/2, 0, self.width/2, self.height)
+            width: 2 
+
+<CanvasExample2>:
+    canvas:
+
+<ImagesExample@GridLayout>:
+    cols: 3
+    # Image:
+        # source:"Images/btc_wallet.jpg"
+    Image:
+        source:"Images/btc_wallet.jpg"
+        allow_stretch: True
+    # Image:
+        # source:"Images/btc_wallet.jpg"
+        # allow_stretch: True
+        # keep_ratio: True
+
+
+<WidgetExample>:
+    cols: 3
+
+    canvas.before:
+        Color:
+            rgba: (255/250, 179/250, 179/250, 1)
+        Rectangle:
+            pos: self.pos
+            size:self.size
+
+    ToggleButton:
+        text: "OFF"
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1 
+        width: "100dp"
+    Button:
+        text: "Count"
+        on_press: root.on_button_click()
+        disabled: not root.count_enabled
+    Label:
+        text: root.my_text
+        font_name: "fonts/Lcd.ttf"
+        font_size: "50dp"
+        color: .6, .6, .6, 1
+    Switch:
+        id: my_switch
+        on_active: root.on_switch_active(self)
+        size_hint: None, 1 
+        width: "100dp"
+        active: True
+    Slider:
+        id: my_slider
+        min: 0
+        max: 100
+        value: 50
+        # on_value: root.on_slider_value(self)
+        orientation: "vertical"
+        disabled: not my_switch.active
+    BoxLayout:
+        oritentation: "vertical"
+        Label:
+            text: str(int(my_slider.value))
+            font_name: "fonts/Lcd.ttf"
+            font_size: "25dp"
+            color: .6, .6, .6, 1
+
+        ProgressBar:
+            max:100
+            value: my_slider.value
+    TextInput:
+        id: my_text_input
+        size_hint: None, 1 
+        width: "100dp"
+        text: "foo"
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text: "Ticker symbol: " + root.text_input_str
+
+
+<PageLayoutExample@PageLayout>:
+    MainWidget:
+    BoxLayoutExample:
+    AnchorLayoutExample:
+    GridLayoutExample:
+    WidgetExample:
+    ImagesExample:
+
+<ScrollViewExample@ScrollView>:
+    StackLayoutExample:
+        size_hint: None, 1
+        height: self.minimum_height
+
+<StackLayoutExample>:
+    # left-right top - bottom
+    # orientation: "lr-tb"
+    # padding ("20dp", "20dp", "20dp", "20dp")
+    # spacing: "20dp", "20dp"
+#     Button:
+#         text: "A"
+#         size_hint: .2, .2
+#     Button:
+#         text: "B"
+#         size_hint: .2, .2
+#     Button:
+#         text: "C"
+#         size_hint: .2, .2
+#     Button:
+#         text: "D"
+#         size_hint: .2, .2
+
+<GridLayoutExample>:
+    # rows
+    # cols
+    rows: 2
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size:self.size
+    Button:
+        text: "A"
+        size_hint: None, 1
+        width: "60dp"
+    BoxLayoutExample:
+    Button:
+        text: "C" 
+    Button:
+        text: "D" 
+        size_hint: None, 1
+        width: "60dp"
+    Button:
+        text: "E" 
+    Button:
+        text: "F" 
+
+
+<AnchorLayoutExample>:
+    # right, left, center 
+    anchor_x: "center"
+    # bottom, top, center
+    anchor_y: "center"
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size:self.size
+    BoxLayout:
+        size_hint: .2,.2
+        Button:
+            text: "A"
+            
+        Button:
+            text: "B"
+            
+
+<BoxLayoutExample>:
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size:self.size
+
+    orientation: "horizontal"
+    
+    Button:
+        text: "A"
+        
+        size_hint: .5, .5
+        # size: "100dp", "60dp"
+        # width: "100dp"
+        # height: "60dp"
+        # x, center_x, right
+        # y, center _y, top
+        pos_hint: { "center_y": .5 }
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+        Button:
+            text: "B1"
+        Button:
+            text: "B2"
+        Button:
+            text: "B3"
+        Label:
+            text: "B4"
+            
+    Label:
+        text: "C"
+
+
+<MainWidget>:
+    Button:
+        text: "Hello"
+        size: "100dp", "80dp"
+        pos: "100dp", "200dp"
+        color: 1, 0, 0, 1
+    Label:
+        text: "Hello2"
+        size: "100dp", "80dp"
+        pos: "200dp", "200dp"
+        color: 1, 0, 0, 1

@@ -1,0 +1,191 @@
+WindowManager:
+    FirstWindow:
+    SecondWindow:
+    ThirdWindow:
+
+<Button>
+    font_size: 25
+    background_normal: ''
+    background_color: (109/250, 111/250, 255/250, 1)
+
+<TextInput>:
+    background_color: (231/250, 227/250, 255/250, 1)
+
+<FirstWindow>:
+    name:"first"
+
+    canvas.before:
+        Color:
+            rgba:(14/250, 22/250, 43/250, 1)
+        Rectangle:
+            size:self.size
+            pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        padding: 20
+        spacing: 10
+
+        Image:
+            source: 'Images/breezy.png'
+            allow_stretch: True
+            keep_ratio: True
+        Image:
+            source: 'Images/app_stocks.png'
+            allow_stretch: True
+            keep_ratio: True
+
+        
+        Button:
+            text:'Click Here To Start'
+            font_size: 15
+            size_hint: (.5,.5)
+            pos_hint: {'center_x': 0.54}
+            on_release: 
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+
+<SecondWindow>:
+    name:"second"
+
+    canvas.before:
+        Color:
+            rgba:(14/250, 22/250, 43/250, 1)
+        Rectangle:
+            size:self.size
+            pos: self.pos
+
+    BoxLayout:
+        orientation:'vertical'
+        size: root.width, root.height
+        padding: 20
+        spacing: 10
+
+        Button:
+            text:'Log Out'
+            size_hint: (.1,.1)
+            font_size: 10
+            # {x, y, top, 'bottom', 'left', 'right'}
+            pos_hint:{'x':.7, 'top':1}
+            on_release: 
+                app.root.current = "first"
+                root.manager.transition.direction = "right"
+
+        Image:
+            source: 'Images/312logo.png'
+            allow_stretch: True
+            keep_ratio: True
+
+
+        Label:
+            text: "Ticker Symbol"
+            background_color:(214/250, 43/250, 112/250, 1)
+            canvas.before:
+                Color:
+                    rgba:self.background_color
+                Rectangle:
+                    size:self.size
+                    pos: self.pos
+            size_hint: (.5,.5)
+            pos_hint: {'center_x': 0.54}
+            font_size: 25
+
+        TextInput:
+            text:''
+            font_size: 25
+            multiline: 'False'
+            size_hint: (.5,.5)
+            pos_hint: {'center_x': 0.54}
+        Button:
+            text: "Forecast"
+            size_hint: (.5,.5)
+            pos_hint: {'center_x': 0.54}
+
+        Button:
+            text:'ForecastImage'
+            font_size: 15
+            size_hint: (.5,.5)
+            pos_hint: {'center_x': 0.54}
+            on_release: 
+                app.root.current = "third"
+                root.manager.transition.direction = "up"
+
+    
+
+<ThirdWindow>:
+    name:"third"
+
+    canvas.before:
+        Color:
+            rgba:(14/250, 22/250, 43/250, 1)
+        Rectangle:
+            size:self.size
+            pos: self.pos
+
+    BoxLayout:
+        orientation:'vertical'
+        size: root.width, root.height
+        padding: 20
+        spacing: 10
+
+        Button:
+            text:'Back'
+            font_size: 15
+            size_hint: (.5,.5)
+            pos_hint: {'center_x': 0.54}
+            on_release: 
+                app.root.current = "second"
+                root.manager.transition.direction = "down"
+
+
+
+
+# <MyLayout>
+#     canvas.before:
+#         Color:
+#             rgba:(247/250, 245/250, 245/250, 1)
+#         Rectangle:
+#             size:self.size
+#             pos: self.pos
+#     BoxLayout:
+#         orientation:'vertical'
+#         size: root.width, root.height
+#         padding: 40
+#         spacing: 10
+
+#         Image:
+#             source: 'Images/312logo.png'
+#             allow_stretch: True
+#             keep_ratio: True
+
+#         Label:
+#             text: "Ticker Symbol"
+#             background_color:(214/250, 43/250, 112/250, 1)
+#             canvas.before:
+#                 Color:
+#                     rgba:self.background_color
+#                 Rectangle:
+#                     size:self.size
+#                     pos: self.pos
+#             size_hint: (.5,.5)
+#             pos_hint: {'center_x': 0.54}
+#             font_size: 25
+#         TextInput:
+#             text:''
+#             font_size: 25
+#             multiline: 'False'
+#             size_hint: (.5,.5)
+#             pos_hint: {'center_x': 0.54}
+#         Button:
+#             text: "Forecast"
+#             size_hint: (.5,.5)
+#             pos_hint: {'center_x': 0.54}
+
+        # Button:
+        #     text: "FinTech"
+
+        # Button:
+        #     text: "Breezy"
+        #     size_hint: (.5,.5)
+        #     pos_hint: {'center_x': 0.54}
