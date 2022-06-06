@@ -452,6 +452,26 @@ BASH_ENV=~/.bashrc_conda
 
 ---
 
+## [Setup RAID 1](https://askubuntu.com/questions/526747/setting-up-raid-1-on-14-04-with-an-existing-drive)
+Enable RAID in UEFI/BIOS at boot (use f12 or other key)
+Run this command using appropriate disk paths (use `lsblk -f` to check):
+```
+# Create Partition for New Disk
+sudo fisk /dev/sdf
+# Create RAID 1 Array
+sudo mdadm --create --verbose /dev/md0 --force --level=1 --raid-devices=1 /dev/sdf1
+# Copy Existing Drive to RAID 1 Array
+sudo cp /dev/sdg /dev/md0
+# Add Existing drive to RAID 1 Array
+sudo mdadm --grow /dev/md0 --raid-devices=2 --add /dev/sdg
+
+sudo mdadm --create /dev/md 1 --level=1 --raid-devices=2 /dev/sdg /dev/sdf
+mdadm --create /dev/md /dev/sdg /dev/sdf --level=1 --raid-devices=2
+
+```
+
+---
+
 ## [Creating Package for Android](https://kivy.org/doc/stable/guide/packaging-android.html)
 
 Install Docker and do:

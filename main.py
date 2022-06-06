@@ -16,7 +16,7 @@ from kivy.network.urlrequest import UrlRequest
 # from ezekial import yahooprophet as yfp
 # from matplotlib import pyplot as plt
 
-import time
+# import time
 ############################################################
 # import requests
 # from dotenv import load_dotenv
@@ -165,7 +165,7 @@ class save_ticker_image:
             # get_image_paths(forecast_image, emos)
             # return [forecast_image, emos]
                              
-        req = UrlRequest(self.url, select_ticker).wait()
+        req = UrlRequest(self.url, select_ticker)#.wait() # CHECK TO SEE IF IT NEEDS TO WAIT IF IT HAS A CONNECTIONS ERROR
 
 ###############################################################################################
 class LoginScreen(GridLayout):
@@ -238,8 +238,10 @@ class LoginScreen(GridLayout):
 
         # pimg = Image(source='images/forecast_temp/decoded.png')
         # self.add_widget(pimg)
-        self.add_widget(Image(source=pimg.forecast_image))
-        self.add_widget(Image(source=pimg.emos))
+        try:self.add_widget(Image(source=pimg.forecast_image))
+        except:self.add_widget(Image(source='images/forecast_temp/image_render_error.png'))
+        try:self.add_widget(Image(source=pimg.emos))
+        except:self.add_widget(Image(source='images/forecast_temp/emoticon_render_error.png'))
 
 ################################################################################################
         ##ORIGINAL##
